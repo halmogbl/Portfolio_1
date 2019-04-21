@@ -8,6 +8,8 @@ import NavBar from "./Components/Navigation";
 import Footer from "./Components/Footer";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/RegistrationForm";
+// import Transfer from "./Components/Home/Transfer";
+import DeviceDetails from "./Components/Home/DeviceDetails";
 
 // Actions
 import * as actionCreators from "./store/actions";
@@ -29,7 +31,9 @@ class App extends Component {
         <Switch>
           <Route path="/Login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route path="/home" component={Home} />
+          <Route exact path="/home" component={Home} />
+          {/* <Route path="/home/transfer" component={Transfer} /> */}
+          <Route path="/home/:device_id/" component={DeviceDetails} />
           <Redirect to="/home" />
         </Switch>
         <Footer />

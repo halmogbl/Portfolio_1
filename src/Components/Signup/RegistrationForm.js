@@ -10,6 +10,7 @@ class RegistationForm extends Component {
     username: "",
     firstname: "",
     lastname: "",
+    phone_number: "",
     password: "",
     confirmpassword: "",
     email: "",
@@ -34,7 +35,8 @@ class RegistationForm extends Component {
         password: this.state.password,
         email: this.state.email,
         first_name: this.state.firstname,
-        last_name: this.state.lastname
+        last_name: this.state.lastname,
+        phone_number: this.state.phone_number
       };
       await this.setState({
         alertPassword: false,
@@ -147,6 +149,19 @@ class RegistationForm extends Component {
             ) : (
               <></>
             )} */}
+
+            <div className="phone_number">
+              <label htmlFor="phone_number">Phone Number </label>
+
+              <Input
+                name="phone_number"
+                type="text"
+                value={this.state.phone_number}
+                onChange={this.changeHandler}
+                className="form-control"
+              />
+            </div>
+
             <div className="email">
               <label htmlFor="email">Email</label>
 
