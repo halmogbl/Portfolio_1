@@ -11,6 +11,12 @@ const transferOwnershipReducer = (state = initialState, action) => {
         ...state,
         ownership: action.payload
       };
+    case actionTypes.FETCH_DEVICES:
+      console.log("[FETCH_DEVICES] => ", action.payload);
+      return {
+        ...state,
+        devices: action.payload
+      };
     default:
       return state;
   }

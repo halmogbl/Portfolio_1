@@ -70,6 +70,9 @@ class NavList extends Component {
                   >
                     logout
                   </button>
+                  <Link style={{ color: "#fff" }} className="" to={`/home`}>
+                    Commercial ID: {this.props.user.username}
+                  </Link>
                 </div>
               </>
             )}

@@ -10,12 +10,32 @@ export const addDevice = device => {
     try {
       const res = await instance.post(`device/create/`, device);
       const newdevice = res.data;
+      console.log(newdevice);
       dispatch({
         type: actionTypes.ADD_DEVICE,
         payload: newdevice
       });
     } catch (error) {
       console.error(error);
+    }
+  };
+};
+
+export const fetchDevices = () => {
+  return async dispatch => {
+    const token = await localStorage.getItem("token");
+    try {
+      const res = await instance.get("device/list/", {
+        headers: { Authorization: `JWT ${token}` }
+      });
+      const devices = res.data;
+      console.log("2");
+      dispatch({
+        type: actionTypes.FETCH_DEVICES,
+        payload: devices
+      });
+    } catch (err) {
+      console.error("Error while fetching devices", err);
     }
   };
 };
