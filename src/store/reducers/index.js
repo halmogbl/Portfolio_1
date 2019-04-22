@@ -11,5 +11,5 @@ export default combineReducers({
   errors: errorReducer,
   deviceReducer: deviceReducer,
   transferOwnershipReducer: transferOwnershipReducer,
-  history: historyReducer
+  historyReducer: historyReducer
 });
