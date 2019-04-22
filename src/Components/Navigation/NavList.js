@@ -73,6 +73,13 @@ class NavList extends Component {
                   <Link style={{ color: "#fff" }} className="" to={`/home`}>
                     Commercial ID: {this.props.user.username}
                   </Link>
+                  <NavLink
+                    style={{ color: "#fff", textDecoration: "none" }}
+                    className=""
+                    to={`/history`}
+                  >
+                    History
+                  </NavLink>
                 </div>
               </>
             )}

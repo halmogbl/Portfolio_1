@@ -7,7 +7,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_HISTORY:
-      console.log("history from reducer", action.payload);
       return {
         ...state,
         history: action.payload

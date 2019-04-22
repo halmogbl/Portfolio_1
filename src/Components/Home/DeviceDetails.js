@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions/";
 
-import { NavLink } from "react-router-dom";
-
 class DeviceDetails extends Component {
   state = {
     id: null,

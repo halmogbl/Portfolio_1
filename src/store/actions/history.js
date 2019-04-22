@@ -14,7 +14,6 @@ export const fetchHistory = () => {
         headers: { Authorization: `JWT ${token}` }
       });
       let history = response.data;
-      console.log("actions history");
 
       dispatch({
         type: actionTypes.FETCH_HISTORY,
