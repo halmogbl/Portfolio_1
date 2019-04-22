@@ -12,24 +12,24 @@ const initialState = {
 const deviceReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_DEVICE:
-      console.log("from add device reducer", action.payload);
       return {
         ...state,
         AddedDevice: action.payload,
         deviceLoading: false
       };
     case actionTypes.FETCH_DEVICES:
-      console.log("All My devices from reducer", action.payload);
       return {
         ...state,
         devices: action.payload
       };
+
 
     case actionTypes.FETCH_ALERT_DEVICES:
       return {
         ...state,
         alert: action.payload.length === 1 ? true : false
       };
+
 
     default:
       return state;

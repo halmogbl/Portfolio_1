@@ -1,5 +1,4 @@
 import * as actionTypes from "./actionTypes";
-
 import axios from "axios";
 
 const instance = axios.create({
@@ -8,11 +7,8 @@ const instance = axios.create({
 
 export const fetchHistory = () => {
   return async dispatch => {
-    const token = await localStorage.getItem("token");
     try {
-      let response = await instance.get("history/", {
-        headers: { Authorization: `JWT ${token}` }
-      });
+      let response = await instance.get("history/");
       let history = response.data;
 
       dispatch({

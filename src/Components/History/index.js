@@ -11,7 +11,7 @@ class History extends Component {
     const historylist = this.props.history;
 
     const History = historylist.map(history => (
-      <HistoryList key={history.id} history={history} />
+      <HistoryList key={`${history.modified}`} history={history} />
     ));
     return <div className="col-12">{History}</div>;
   }

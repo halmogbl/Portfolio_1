@@ -19,19 +19,16 @@ class NavList extends Component {
           padding: 10
         }}
       >
-        <div
-          className="col-lg-1 col-md-3 col-sm-4"
-          style={{ textAlign: "center", padding: 6 }}
-        >
+        <div className="col-2" style={{ textAlign: "center", padding: 6 }}>
           <Link style={{ color: "#fff" }} className="" to={`/home`}>
             Sekail
           </Link>
         </div>
 
-        <div className=" col-lg-3 col-md-4 col-sm-4 ">
-          <div className=" col-lg-9 col-md-9 col-sm-9">
+        <div className=" col-10 ">
+          <div className=" col-12">
             {!this.props.user ? (
-              <>
+              <div className="col-6">
                 <div
                   className="col-6"
                   style={{ textAlign: "center", padding: 5 }}
@@ -56,30 +53,42 @@ class NavList extends Component {
                     Signup
                   </NavLink>
                 </div>
-              </>
+              </div>
             ) : (
               <>
                 <div
-                  className="col-6"
+                  className="col-12"
                   style={{ textAlign: "center", padding: 5 }}
                 >
-                  <button
-                    onClick={() => this.props.logout(this.props.history)}
-                    className=""
-                    style={{}}
+                  <Link
+                    style={{ color: "#fff" }}
+                    className="col-3"
+                    to={`/home`}
                   >
-                    logout
-                  </button>
-                  <Link style={{ color: "#fff" }} className="" to={`/home`}>
-                    Commercial ID: {this.props.user.username}
+                    {this.props.user.username}
                   </Link>
                   <NavLink
                     style={{ color: "#fff", textDecoration: "none" }}
-                    className=""
+                    className="col-3"
                     to={`/history`}
                   >
                     History
                   </NavLink>
+                  <NavLink
+                    style={{ color: "#fff", textDecoration: "none" }}
+                    className="col-3"
+                    to={`/add`}
+                  >
+                    Add Device
+                  </NavLink>
+
+                  <button
+                    onClick={() => this.props.logout(this.props.history)}
+                    className="col-3"
+                    style={{}}
+                  >
+                    logout
+                  </button>
                 </div>
               </>
             )}

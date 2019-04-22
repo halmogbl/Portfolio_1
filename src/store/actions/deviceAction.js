@@ -10,7 +10,6 @@ export const addDevice = device => {
     try {
       const res = await instance.post(`device/create/`, device);
       const newdevice = res.data;
-      console.log(newdevice);
       dispatch({
         type: actionTypes.ADD_DEVICE,
         payload: newdevice
@@ -23,13 +22,10 @@ export const addDevice = device => {
 
 export const fetchDevices = () => {
   return async dispatch => {
-    const token = await localStorage.getItem("token");
     try {
-      const res = await instance.get("device/list/", {
-        headers: { Authorization: `JWT ${token}` }
-      });
+      const res = await instance.get("device/list/");
       const devices = res.data;
-      console.log("2111");
+
       dispatch({
         type: actionTypes.FETCH_DEVICES,
         payload: devices
@@ -39,6 +35,43 @@ export const fetchDevices = () => {
     }
   };
 };
+
+export const changeAlertStatusTrue = (user, deviceID, history) => {
+  return async dispatch => {
+    try {
+      const res = await axios.put(
+        `http://127.0.0.1:8000/device/${deviceID}/update/`,
+        user
+      );
+
+      const newStatus = res.data;
+      console.log("New Status", newStatus);
+      dispatch(fetchDevices());
+      history.push("/home");
+    } catch (err) {
+      console.error("Error while changeding Alert Status", err);
+    }
+  };
+};
+
+export const changeAlertStatusFalse = (user, deviceID, history) => {
+  return async dispatch => {
+    try {
+      const res = await axios.put(
+        `http://127.0.0.1:8000/device/${deviceID}/update/`,
+        user
+      );
+
+      const newStatus = res.data;
+      console.log("New Status", newStatus);
+      dispatch(fetchDevices());
+      history.push("/home");
+    } catch (err) {
+      console.error("Error while changeding Alert Status", err);
+    }
+  };
+};
+
 export const fetchAlertDevices = iemi_id => {
   console.log("Actions iemi", iemi_id);
 

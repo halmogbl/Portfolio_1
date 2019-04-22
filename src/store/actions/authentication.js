@@ -44,7 +44,6 @@ export const login = (userData, history) => {
     try {
       let response = await instance.post("user/login/", userData);
       let user = response.data;
-      console.log(user);
       setAuthToken(user.token);
       let decodedUser = jwt_decode(user.token);
       dispatch(setCurrentUser(decodedUser));

@@ -1,48 +1,82 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions/";
+import { NavLink } from "react-router-dom";
 
 class DeviceDetails extends Component {
   state = {
     id: null,
     user: "",
-    is_alerted: false
+    is_alerted: null
   };
   async componentDidMount() {
-    await this.setState({ id: this.props.match.params.device_id });
-    console.log("id in state", this.state.id);
+    await this.setState({
+      id: this.props.match.params.device_id,
+      user: this.props.user.username
+    });
+    await this.props.fetchDevices();
+    const device = this.props.devices.find(
+      device => device.id === +this.state.id
+    );
+    await this.setState({
+      device: device
+    });
   }
 
   handleChange = event => {
     this.setState({ user: event.target.value });
-    console.log(this.state);
   };
-  handleSubmit = () => {
-    this.props.transferOwnership(this.state, this.state.id);
+  handleAlertTrue = async () => {
+    await this.setState({ is_alerted: true });
+    this.props.changeAlertStatusTrue(
+      this.state,
+      this.state.id,
+      this.props.history
+    );
+  };
+  handleAlertFalse = async () => {
+    await this.setState({ is_alerted: false });
+    this.props.changeAlertStatusFalse(
+      this.state,
+      this.state.id,
+      this.props.history
+    );
   };
 
   render() {
-    // let deviceID = this.props.match.params.device_id;
     return (
       <div>
-        <form>
-          <label>NEW OWNER</label>
-          <input onChange={this.handleChange} />
-        </form>
-        <button onClick={this.handleSubmit} />
+        {this.state.device && this.state.device.is_alerted ? (
+          <button onClick={this.handleAlertFalse}>Remove Alert</button>
+        ) : (
+          <>
+            <NavLink
+              to={`/home/device/${this.props.match.params.device_id}/transfare`}
+            >
+              Transfare
+            </NavLink>
+            <button onClick={this.handleAlertTrue}>Alert</button>
+          </>
+        )}
       </div>
     );
   }
 }
-
+const mapStateToProps = state => ({
+  user: state.auth.user,
+  devices: state.deviceReducer.devices
+});
 const mapDispatchToProps = dispatch => {
   return {
-    transferOwnership: (user, deviceID) =>
-      dispatch(actionCreators.transferOwnership(user, deviceID))
+    changeAlertStatusTrue: (user, deviceID, history) =>
+      dispatch(actionCreators.changeAlertStatusTrue(user, deviceID, history)),
+    changeAlertStatusFalse: (user, deviceID, history) =>
+      dispatch(actionCreators.changeAlertStatusFalse(user, deviceID, history)),
+    fetchDevices: () => dispatch(actionCreators.fetchDevices())
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(DeviceDetails);

@@ -5,19 +5,12 @@ const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/"
 });
 
-export const transferOwnership = (user, device_id) => {
-  console.log(`device id is: ${device_id} and user object is: ${user}`);
+export const transferOwnership = (user, device_id, history) => {
   return async dispatch => {
-    const token = localStorage.getItem("token");
-    console.log(`TOKEN: ${token}`);
-
     try {
-      const res = await instance.put(`device/${device_id}/update/`, user, {
-        headers: { Authorization: `JWT ${token}` }
-      });
+      const res = await instance.put(`device/${device_id}/update/`, user);
       const ownership = res.data;
-      console.log(`new owner: ${ownership}`);
-
+      history.push("/home");
       dispatch({
         type: actionTypes.TRANSFER_OWNERSHIP,
         payload: ownership
