@@ -4,7 +4,10 @@ export {
   addDevice,
   fetchDevices,
   changeAlertStatusTrue,
-  changeAlertStatusFalse
+  changeAlertStatusFalse,
+  fetchAlertDevices
 } from "./deviceAction";
+
 export { fetchHistory } from "./history";
+ 
 export { transferOwnership } from "./transferOwnership";
