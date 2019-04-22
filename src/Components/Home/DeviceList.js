@@ -5,9 +5,9 @@ class DeviceList extends Component {
   render() {
     const device = this.props.device;
     return (
-      <ul>
-        <NavLink to={`/home/${device.id}/`}>{device.iemi_id}</NavLink>
-      </ul>
+      <li>
+        <NavLink to={`/home/device/${device.id}`}>{device.iemi_id}</NavLink>
+      </li>
     );
   }
 }

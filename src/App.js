@@ -9,9 +9,10 @@ import Footer from "./Components/Footer";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/RegistrationForm";
 // import Transfer from "./Components/Home/Transfer";
+import Transfare from "./Components/Home/Transfer";
 import DeviceDetails from "./Components/Home/DeviceDetails";
 import History from "./Components/History";
-
+import AddDevice from "./Components/Home/AddDevice";
 // Actions
 import * as actionCreators from "./store/actions";
 
@@ -34,8 +35,14 @@ class App extends Component {
           <Route path="/signup" component={Signup} />
           <Route exact path="/home" component={Home} />
           {/* <Route path="/home/transfer" component={Transfer} /> */}
-          <Route path="/home/:device_id/" component={DeviceDetails} />
+          <Route
+            path="/home/device/:device_id/transfare"
+            component={Transfare}
+          />
+          <Route path="/home/device/:device_id/" component={DeviceDetails} />
+
           <Route path="/history" component={History} />
+          <Route path="/add" component={AddDevice} />
           <Redirect to="/home" />
         </Switch>
         <Footer />

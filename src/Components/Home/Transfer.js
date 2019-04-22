@@ -1,68 +1,45 @@
-// import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import * as actionCreators from "../../store/actions";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actionCreators from "../../store/actions/";
 
-// class Transfer extends Component {
-//   state = {
-//     id: null,
-//     user: null,
-//     is_alerted: false
-//   };
+class Transfare extends Component {
+  state = {
+    id: null,
+    user: "",
+    is_alerted: false
+  };
+  async componentDidMount() {
+    await this.setState({ id: this.props.match.params.device_id });
+  }
 
-//   componentDidMount() {
-//     const device = this.props.getParam("device");
-//     this.setState({ id: device.id });
+  handleChange = event => {
+    this.setState({ user: event.target.value });
+  };
+  handleSubmit = () => {
+    this.props.transferOwnership(this.state, this.state.id, this.props.history);
+  };
 
-//     handleChange = e => {
-//       this.setState({ user: e.target.value });
-//     };
+  render() {
+    return (
+      <div>
+        <form>
+          <label>NEW OWNER</label>
+          <input onChange={this.handleChange} />
+        </form>
+        <button onClick={this.handleSubmit}>Transfare Ownership</button>
+      </div>
+    );
+  }
+}
 
-//     handleSubmit = deviceID => {
-//       this.props.transferOwnership(this.state, deviceID, this.props);
-//     };
+const mapDispatchToProps = dispatch => {
+  return {
+    transferOwnership: (user, deviceID, history) =>
+      dispatch(actionCreators.transferOwnership(user, deviceID, history))
+  };
+};
 
-//     render();
-//     // const transferOwnership = async () => {
-//     //   await this.props.transferOwnership(this.state);
-//     // };
-//     const device = device.getParam("device");
-
-//     return (
-//       <div>
-//         <div>
-//           {/* change ownerShip
-//           username
-//           <input type="text" onChange={this.userChange.bind(this)} />
-//           IEMI
-//           <input type="text" onChange={this.idChange.bind(this)} />
-//           <button onClick={() => this.props.transferOwnership(this.state)}>
-//             Transfer Ownership
-//           </button> */}
-//           here we are!!!!
-//           <label> NEW OWNER</label>
-//           <input type="text" onChange={this.handleChange.bind(this)} />
-//           <button onClick={() => this.handleSubmit(device.id)}>
-//             Transfer Ownership
-//           </button>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// const mapStateToProps = state => ({
-//   user: state.authReducer.user,
-//   devices: state.devicesReducer.devices
-// });
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     // transferOwnership: user => dispatch(actionCreators.transferOwnership(user)),
-//     transferOwnership: (user, deviceID) =>
-//       dispatch(actionCreators.transferOwnership(user, deviceID))
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Transfer);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Transfare);
