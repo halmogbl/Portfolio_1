@@ -5,7 +5,8 @@ const initialState = {
   deviceLoading: true,
   AddedDevice: "",
   deviceDetail: null,
-  deviceDetailLoading: true
+  deviceDetailLoading: true,
+  alert: false
 };
 
 const deviceReducer = (state = initialState, action) => {
@@ -23,12 +24,13 @@ const deviceReducer = (state = initialState, action) => {
         ...state,
         devices: action.payload
       };
-    // case actionTypes.GET_DEVICE_DETAIL:
-    //   return {
-    //     ...state,
-    //     deviceDetail: action.payload,
-    //     deviceDetailLoading: false
-    //   };
+
+    case actionTypes.FETCH_ALERT_DEVICES:
+      return {
+        ...state,
+        alert: action.payload.length === 1 ? true : false
+      };
+
     default:
       return state;
   }
