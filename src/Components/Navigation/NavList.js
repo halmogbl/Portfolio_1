@@ -105,7 +105,7 @@ class NavList extends Component {
     return (
       //   <div id="wrapper">
       <div
-        className="col-6"
+        className="col-12"
         style={{
           color: "#fff",
           position: "fixed",
@@ -115,82 +115,76 @@ class NavList extends Component {
           padding: 0
         }}
       >
-        <ul className="sidebar navbar-nav">
-          <li className="nav-item active">
+        <ul
+          className="sidebar navbar-nav col-12"
+          style={{ margin: 0, padding: 0 }}
+        >
+          <li
+            className="nav-item active col-12"
+            style={{ margin: 0, padding: 0 }}
+          >
             <NavLink
-              className="nav-link"
               style={{
                 color: "#fff",
                 textDecoration: "none",
-
-                padding: 18
+                padding: 10
               }}
-              className=""
+              className="col-12"
               to={`/home`}
             >
-              Dashboard
+              Home
             </NavLink>
           </li>
-          <li className="nav-item">
+          <li className="nav-item col-12" style={{ margin: 0, padding: 0 }}>
             <NavLink
-              className="nav-link"
+              className="col-12"
               style={{
                 color: "#fff",
                 textDecoration: "none",
-
-                padding: 18
+                padding: 10
               }}
-              className=""
               to={`/add`}
             >
               Add Device
             </NavLink>
           </li>
-          <li className="nav-item">
+          <li className="nav-item col-12" style={{ margin: 0, padding: 0 }}>
             <NavLink
-              className="nav-link"
               style={{
                 color: "#fff",
-                textDecoration: "none",
-
-                padding: 18
+                textDecoration: "none col-12",
+                padding: 10
               }}
-              className=""
+              className="col-12"
               to={`/history`}
             >
               History
             </NavLink>
           </li>
-          <li className="nav-item">
+          <li className="nav-item col-12" style={{ margin: 0, padding: 0 }}>
             <NavLink
-              className="nav-link"
               style={{
                 color: "#fff",
                 textDecoration: "none",
-
-                padding: 18
+                padding: 10
               }}
-              className=""
+              className="col-12"
               to={`/search`}
             >
               Search
             </NavLink>
           </li>
-          <hr />
-          <li className="nav-item">
-            <a className="nav-link" href="/">
-              <span>History</span>
-            </a>
-          </li>
 
-          <li className="nav-item" style={{ right: -18 }}>
-            <a
-              className="nav-link"
+          <hr />
+          <hr />
+
+          <li className="nav-item col-12" style={{ margin: 0, padding: 0 }}>
+            <button
               onClick={() => this.props.logout(this.props.history)}
-              className=""
+              className="btn col-2"
             >
               <span>Logout</span>
-            </a>
+            </button>
           </li>
           <hr />
         </ul>

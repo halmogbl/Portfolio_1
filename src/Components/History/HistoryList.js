@@ -5,19 +5,29 @@ class HistoryList extends Component {
   render() {
     let history = this.props.history;
     return (
-      <ul className="col-12">
-        <li>iemi number: {history.iemi_id}</li>
-        <li>
-          status:
-          {history.is_alerted ? (
-            <span style={{ color: "red" }}>Alerted</span>
-          ) : (
-            <span style={{ color: "green" }}>Safe</span>
-          )}
-        </li>
-        <li>Created at: {history.created}</li>
-        <li>Last Modified :{history.modified}</li>
-      </ul>
+      <>
+        <tr className="col-12" style={{ padding: 0, background: "#e7e7e7" }}>
+          <th className="col-12">iemi: {history.iemi_id}</th>
+        </tr>
+        <tr className="col-12" style={{ padding: 0 }}>
+          <th className="col-4">
+            <span>Created: {history.created.substring(0, 10)} |</span>
+            <span> {history.created.substring(11, 19)}</span>
+          </th>
+          <th className="col-4">
+            <span> Last Modified : {history.modified.substring(0, 10)} |</span>
+            <span> {history.modified.substring(11, 19)}</span>
+          </th>
+          <th className="col-4">
+            status:
+            {history.is_alerted ? (
+              <span style={{ color: "red" }}>Alerted</span>
+            ) : (
+              <span style={{ color: "green" }}>Safe</span>
+            )}
+          </th>
+        </tr>
+      </>
     );
   }
 }

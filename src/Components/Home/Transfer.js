@@ -42,12 +42,24 @@ class Transfare extends Component {
                 <div className="table-responsive">
                   <div>
                     <form>
-                      <label>NEW OWNER</label>
-                      <input onChange={this.handleChange} />
+                      <label
+                        className="col-form-label"
+                        style={{ marginRight: 10 }}
+                      >
+                        NEW OWNER
+                      </label>
+                      <input
+                        className="col-4 form-control"
+                        onChange={this.handleChange}
+                      />
+                      <button
+                        className=" col-2 btn btn-success"
+                        style={{ marginLeft: 10 }}
+                        onClick={this.handleSubmit}
+                      >
+                        Transfare Ownership
+                      </button>
                     </form>
-                    <button onClick={this.handleSubmit}>
-                      Transfare Ownership
-                    </button>
                   </div>
                 </div>
               </div>
