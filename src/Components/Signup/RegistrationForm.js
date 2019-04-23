@@ -85,11 +85,11 @@ class RegistationForm extends Component {
   // isConfirmedPassword = e => {
   //   return e === this.state.password;
   // };
-  // handleEmailInput = e => {
-  //   this.setState({
-  //     email: e.target.value
-  //   });
-  // };
+  handleEmailInput = e => {
+    this.setState({
+      email: e.target.value
+    });
+  };
 
   // validateEmail = e => {
   //   let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -223,114 +223,90 @@ class RegistationForm extends Component {
       //     </form>
       //   </div>
       // </div>
-      <div className="container">
-        <div className="card o-hidden border-0 shadow-lg my-5">
-          <div className="card-body p-0">
-            <div className="row">
-              <div className="col-lg-5 d-none d-lg-block bg-register-image" />
-              <div className="col-lg-7">
-                <div className="p-5">
-                  <div className="text-center">
-                    <h1 className="h4 text-gray-900 mb-4">
-                      Create an Account!
-                    </h1>
-                  </div>
-                  <form onSubmit={this.submitHandler}>
-                    <div className="form-group row">
-                      <div className="col-sm-6 mb-3 mb-sm-0">
-                        <Input
-                          name="username"
-                          value={this.state.username}
-                          onChange={this.changeHandler}
-                          className="form-control form-control-user"
-                          placeholder="Commercial ID"
-                        />
-                      </div>
-                      <div className="col-sm-6">
-                        <Input
-                          name="phone_number"
-                          value={this.state.phone_number}
-                          onChange={this.changeHandler}
-                          className="form-control form-control-user"
-                          placeholder="Phone Number"
-                        />
-                      </div>
-                    </div>
-                    <div className="form-group ">
+      <div
+        style={{ marginTop: "125px" }}
+        className="card o-hidden border-0 shadow-lg   col-12"
+      >
+        <div className="card-body p-0">
+          <div className="row">
+            <div className="col-lg-5 d-none d-lg-block bg-register-image  col-12" />
+            <div className="col-lg-7  col-12">
+              <div className="p-5">
+                <div className="text-center  col-12">
+                  <h1 className="h4 text-gray-900 mb-4  col-12">
+                    Create Account
+                  </h1>
+                </div>
+                <form onSubmit={this.submitHandler}>
+                  <div className="form-group row">
+                    <div className="col-sm-6 mb-3 mb-sm-0">
                       <Input
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.handleEmailInput}
-                        type="email"
+                        name="username"
+                        value={this.state.username}
+                        onChange={this.changeHandler}
                         className="form-control form-control-user"
-                        placeholder="Email Address"
+                        placeholder="Commercial ID"
                       />
                     </div>
-                    <div className="form-group row">
-                      <div className="col-sm-6 mb-3 mb-sm-0">
-                        <Input
-                          name="password"
-                          value={this.state.password}
-                          onChange={this.changeHandler}
-                          type="password"
-                          className="form-control form-control-user"
-                          placeholder="Password"
-                        />
-                      </div>
-                      <div className="col-sm-6">
-                        <Input
-                          name="confirmpassword"
-                          value={this.state.confirmpassword}
-                          onChange={this.changeHandler}
-                          type="password"
-                          className="form-control form-control-user"
-                          placeholder="Repeat Password"
-                        />
-                      </div>
+                    <div className="col-sm-6">
+                      <Input
+                        name="phone_number"
+                        value={this.state.phone_number}
+                        onChange={this.changeHandler}
+                        className="form-control form-control-user"
+                        placeholder="Phone Number"
+                      />
                     </div>
-                    <div className="col-12">
-                      <button
-                        style={{ padding: 9, marginTop: 20 }}
-                        type="submit"
-                        className="btn btn-success col-12 "
-                      >
-                        CREATE ACCOUNT
-                      </button>
+                  </div>
+                  <div className="form-group ">
+                    <Input
+                      name="email"
+                      value={this.state.email}
+                      onChange={this.handleEmailInput}
+                      type="email"
+                      className="form-control form-control-user"
+                      placeholder="Email Address"
+                    />
+                  </div>
+                  <div className="form-group row">
+                    <div className="col-sm-6 mb-3 mb-sm-0">
+                      <Input
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.changeHandler}
+                        type="password"
+                        className="form-control form-control-user"
+                        placeholder="Password"
+                      />
                     </div>
-                    {/* <a
-                      className="btn btn-primary btn-user btn-block"
+                    <div className="col-sm-6">
+                      <Input
+                        name="confirmpassword"
+                        value={this.state.confirmpassword}
+                        onChange={this.changeHandler}
+                        type="password"
+                        className="form-control form-control-user"
+                        placeholder="Repeat Password"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <button
+                      style={{ padding: 9, marginTop: 20 }}
                       type="submit"
+                      className="btn btn-success col-12 "
                     >
-                      Register Account
-                    </a> */}
-                    <hr />
-                    {/* <a href="/" className="btn btn-google btn-user btn-block">
-                      <i className="fab fa-google fa-fw" /> Register with Google
-                    </a>
-                    <a href="/" className="btn btn-facebook btn-user btn-block">
-                      <i className="fab fa-facebook-f fa-fw" /> Register with
-                      Facebook
-                    </a> */}
-                  </form>
+                      CREATE ACCOUNT
+                    </button>
+                  </div>
+
                   <hr />
-                  <div className="text-center">
-                    <a className="small" href="/">
-                      Forgot Password?
-                    </a>
-                  </div>
-                  <div className="text-center">
-                    <a href="/" className="small">
-                      Already have an account? Login!
-                    </a>
-                    {/* <Link
-                      to={"login" ? "/signup" : "/login"}
-                      className="btn btn-small btn-link"
-                    >
-                      {"login"
-                        ? "register an account"
-                        : "login with an existing account"}
-                    </Link> */}
-                  </div>
+                </form>
+                <hr />
+                <div className="text-center">
+                  <a href="/" className="small">
+                    Already have an account? Login
+                  </a>
                 </div>
               </div>
             </div>

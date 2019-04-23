@@ -17,7 +17,6 @@ import Search from "./Components/Navigation/Search";
 
 import History from "./Components/History";
 import AddDevice from "./Components/Home/AddDevice";
-
 // Actions
 import * as actionCreators from "./store/actions";
 
@@ -43,6 +42,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/home" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+
           <Route
             path="/home/device/:device_id/transfare"
             component={Transfare}
@@ -51,6 +52,7 @@ class App extends Component {
           <Route path="/history" component={History} />
           <Route path="/add" component={AddDevice} />
           <Route path="/search" component={Search} />
+
           <Redirect to="/home" />
         </Switch>
         <Footer />

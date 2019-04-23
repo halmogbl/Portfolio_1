@@ -94,7 +94,7 @@ class Login extends Component {
       //   </div>
       // </div>
       <div className="container">
-        <div className="row justify-content-center">
+        <div className="row justify-content-center" style={{ marginTop: 125 }}>
           <div className="col-xl-10 col-lg-12 col-md-9">
             <div className="card o-hidden border-0 shadow-lg my-5">
               <div className="card-body p-0">
@@ -103,10 +103,15 @@ class Login extends Component {
                   <div className="col-lg-6">
                     <div className="p-5">
                       <div className="text-center">
-                        <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                        <h1 className="h4 text-gray-900 mb-4">
+                          Shop Dashboard
+                        </h1>
                       </div>
                       <form onSubmit={this.submitHandler}>
-                        <div className="form-group">
+                        <div
+                          className="form-group col-12"
+                          style={{ padding: 0 }}
+                        >
                           <Input
                             name="username"
                             className="form-control form-control-user"
@@ -115,7 +120,10 @@ class Login extends Component {
                             placeholder="Commercial ID"
                           />
                         </div>
-                        <div className="form-group">
+                        <div
+                          className="form-group col-12"
+                          style={{ padding: 0 }}
+                        >
                           <Input
                             type="password"
                             className="form-control form-control-user"
@@ -126,15 +134,14 @@ class Login extends Component {
                           />
                         </div>
 
-                        <div className="btn btn-primary btn-user btn-block">
-                          <button
-                            style={{ padding: 9 }}
-                            type="submit"
-                            className="btn  col-12"
-                          >
-                            Login
-                          </button>
-                        </div>
+                        <button
+                          style={{ padding: 9 }}
+                          type="submit"
+                          className="btn btn-primary col-12"
+                        >
+                          Login
+                        </button>
+
                         <hr />
                         {/* <a
                           href="index.html"

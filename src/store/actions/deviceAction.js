@@ -5,11 +5,12 @@ const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/"
 });
 
-export const addDevice = device => {
+export const addDevice = (device, history) => {
   return async dispatch => {
     try {
       const res = await instance.post(`device/create/`, device);
       const newdevice = res.data;
+      history.push("/home");
       dispatch({
         type: actionTypes.ADD_DEVICE,
         payload: newdevice
