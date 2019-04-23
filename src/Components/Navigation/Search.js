@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Alert from "./Alert";
-import axios from "axios";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
 
