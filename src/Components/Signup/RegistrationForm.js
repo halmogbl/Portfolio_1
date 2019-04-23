@@ -98,129 +98,243 @@ class RegistationForm extends Component {
 
   render() {
     return (
-      <div className="create_account_screen">
-        <div className="create_account_form">
-          <h1>Create account</h1>
-          <p>YOUR INFORMATION.</p>
-          <form onSubmit={this.submitHandler}>
-            {this.state.alertUsername ? (
-              <div
-                style={{ marginTop: 20 }}
-                className="col-12 alert alert-danger"
-                role="alert"
-              >
-                Please input a username
+      // <div className="create_account_screen">
+      //   <div className="create_account_form">
+      //     <h1>Create account</h1>
+      //     <p>YOUR INFORMATION.</p>
+      //     <form onSubmit={this.submitHandler}>
+      //       {this.state.alertUsername ? (
+      //         <div
+      //           style={{ marginTop: 20 }}
+      //           className="col-12 alert alert-danger"
+      //           role="alert"
+      //         >
+      //           Please input a username
+      //         </div>
+      //       ) : (
+      //         <></>
+      //       )}
+      //       <label htmlFor="userName">User Name</label>
+      //       <Input
+      //         name="username"
+      //         value={this.state.username}
+      //         onChange={this.changeHandler}
+      //         className="form-control"
+      //       />
+
+      //       <div className="firstName">
+      //         <label htmlFor="firstName">First Name</label>
+      //         <Input
+      //           name="firstname"
+      //           value={this.state.firstname}
+      //           onChange={this.changeHandler}
+      //           className="form-control"
+      //         />
+      //       </div>
+
+      //       <div className="lastName">
+      //         <label htmlFor="LastName">Last Name</label>
+      //         <Input
+      //           name="lastname"
+      //           value={this.state.lastname}
+      //           onChange={this.changeHandler}
+      //           className="form-control"
+      //         />
+      //       </div>
+
+      //       {/* {this.state.alertEmail ? (
+      //         <div className="alert alert-danger" role="alert">
+      //           Please input an Email
+      //         </div>
+      //       ) : (
+      //         <></>
+      //       )} */}
+
+      //       <div className="phone_number">
+      //         <label htmlFor="phone_number">Phone Number </label>
+
+      //         <Input
+      //           name="phone_number"
+      //           type="text"
+      //           value={this.state.phone_number}
+      //           onChange={this.changeHandler}
+      //           className="form-control"
+      //         />
+      //       </div>
+
+      //       <div className="email">
+      //         <label htmlFor="email">Email</label>
+
+      //         <Input
+      //           name="email"
+      //           type="email"
+      //           value={this.state.email}
+      //           onChange={this.handleEmailInput}
+      //           className="form-control"
+      //         />
+      //       </div>
+      //       {this.state.alertPassword ? (
+      //         <div
+      //           style={{ marginTop: 20 }}
+      //           className="col-12 alert alert-danger"
+      //           role="alert"
+      //         >
+      //           Passwords dont match or no password inputed
+      //         </div>
+      //       ) : (
+      //         <></>
+      //       )}
+      //       <div className="password">
+      //         <label htmlFor="password">Password</label>
+      //         <Input
+      //           type="password"
+      //           name="password"
+      //           className="form-control"
+      //           // validator="true"
+      //           // minCharacters="8"
+      //           // requireCapitals="1"
+      //           // requireNumbers="1"
+      //           value={this.state.passsword}
+      //           onChange={this.changeHandler}
+      //         />
+      //       </div>
+
+      //       <label htmlFor="ConfirmPassword">Confirm Password</label>
+      //       <Input
+      //         type="password"
+      //         name="confirmpassword"
+      //         // validator="true"
+      //         // minCharacters="8"
+      //         // requireCapitals="1"
+      //         // requireNumbers="1"
+      //         className="form-control"
+      //         value={this.state.confirmpasssword}
+      //         onChange={this.changeHandler}
+      //       />
+      //       <div className="col-12">
+      //         <button
+      //           style={{ padding: 9, marginTop: 20 }}
+      //           type="submit"
+      //           className="btn btn-success col-12 "
+      //         >
+      //           CREATE ACCOUNT
+      //         </button>
+      //       </div>
+      //     </form>
+      //   </div>
+      // </div>
+      <div className="container">
+        <div className="card o-hidden border-0 shadow-lg my-5">
+          <div className="card-body p-0">
+            <div className="row">
+              <div className="col-lg-5 d-none d-lg-block bg-register-image" />
+              <div className="col-lg-7">
+                <div className="p-5">
+                  <div className="text-center">
+                    <h1 className="h4 text-gray-900 mb-4">
+                      Create an Account!
+                    </h1>
+                  </div>
+                  <form onSubmit={this.submitHandler}>
+                    <div className="form-group row">
+                      <div className="col-sm-6 mb-3 mb-sm-0">
+                        <Input
+                          name="username"
+                          value={this.state.username}
+                          onChange={this.changeHandler}
+                          className="form-control form-control-user"
+                          placeholder="Commercial ID"
+                        />
+                      </div>
+                      <div className="col-sm-6">
+                        <Input
+                          name="phone_number"
+                          value={this.state.phone_number}
+                          onChange={this.changeHandler}
+                          className="form-control form-control-user"
+                          placeholder="Phone Number"
+                        />
+                      </div>
+                    </div>
+                    <div className="form-group ">
+                      <Input
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.handleEmailInput}
+                        type="email"
+                        className="form-control form-control-user"
+                        placeholder="Email Address"
+                      />
+                    </div>
+                    <div className="form-group row">
+                      <div className="col-sm-6 mb-3 mb-sm-0">
+                        <Input
+                          name="password"
+                          value={this.state.password}
+                          onChange={this.changeHandler}
+                          type="password"
+                          className="form-control form-control-user"
+                          placeholder="Password"
+                        />
+                      </div>
+                      <div className="col-sm-6">
+                        <Input
+                          name="confirmpassword"
+                          value={this.state.confirmpassword}
+                          onChange={this.changeHandler}
+                          type="password"
+                          className="form-control form-control-user"
+                          placeholder="Repeat Password"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-12">
+                      <button
+                        style={{ padding: 9, marginTop: 20 }}
+                        type="submit"
+                        className="btn btn-success col-12 "
+                      >
+                        CREATE ACCOUNT
+                      </button>
+                    </div>
+                    {/* <a
+                      className="btn btn-primary btn-user btn-block"
+                      type="submit"
+                    >
+                      Register Account
+                    </a> */}
+                    <hr />
+                    {/* <a href="/" className="btn btn-google btn-user btn-block">
+                      <i className="fab fa-google fa-fw" /> Register with Google
+                    </a>
+                    <a href="/" className="btn btn-facebook btn-user btn-block">
+                      <i className="fab fa-facebook-f fa-fw" /> Register with
+                      Facebook
+                    </a> */}
+                  </form>
+                  <hr />
+                  <div className="text-center">
+                    <a className="small" href="/">
+                      Forgot Password?
+                    </a>
+                  </div>
+                  <div className="text-center">
+                    <a href="/" className="small">
+                      Already have an account? Login!
+                    </a>
+                    {/* <Link
+                      to={"login" ? "/signup" : "/login"}
+                      className="btn btn-small btn-link"
+                    >
+                      {"login"
+                        ? "register an account"
+                        : "login with an existing account"}
+                    </Link> */}
+                  </div>
+                </div>
               </div>
-            ) : (
-              <></>
-            )}
-            <label htmlFor="userName">User Name</label>
-            <Input
-              name="username"
-              value={this.state.username}
-              onChange={this.changeHandler}
-              className="form-control"
-            />
-
-            <div className="firstName">
-              <label htmlFor="firstName">First Name</label>
-              <Input
-                name="firstname"
-                value={this.state.firstname}
-                onChange={this.changeHandler}
-                className="form-control"
-              />
             </div>
-
-            <div className="lastName">
-              <label htmlFor="LastName">Last Name</label>
-              <Input
-                name="lastname"
-                value={this.state.lastname}
-                onChange={this.changeHandler}
-                className="form-control"
-              />
-            </div>
-
-            {/* {this.state.alertEmail ? (
-              <div className="alert alert-danger" role="alert">
-                Please input an Email
-              </div>
-            ) : (
-              <></>
-            )} */}
-
-            <div className="phone_number">
-              <label htmlFor="phone_number">Phone Number </label>
-
-              <Input
-                name="phone_number"
-                type="text"
-                value={this.state.phone_number}
-                onChange={this.changeHandler}
-                className="form-control"
-              />
-            </div>
-
-            <div className="email">
-              <label htmlFor="email">Email</label>
-
-              <Input
-                name="email"
-                type="email"
-                value={this.state.email}
-                onChange={this.handleEmailInput}
-                className="form-control"
-              />
-            </div>
-            {this.state.alertPassword ? (
-              <div
-                style={{ marginTop: 20 }}
-                className="col-12 alert alert-danger"
-                role="alert"
-              >
-                Passwords dont match or no password inputed
-              </div>
-            ) : (
-              <></>
-            )}
-            <div className="password">
-              <label htmlFor="password">Password</label>
-              <Input
-                type="password"
-                name="password"
-                className="form-control"
-                // validator="true"
-                // minCharacters="8"
-                // requireCapitals="1"
-                // requireNumbers="1"
-                value={this.state.passsword}
-                onChange={this.changeHandler}
-              />
-            </div>
-
-            <label htmlFor="ConfirmPassword">Confirm Password</label>
-            <Input
-              type="password"
-              name="confirmpassword"
-              // validator="true"
-              // minCharacters="8"
-              // requireCapitals="1"
-              // requireNumbers="1"
-              className="form-control"
-              value={this.state.confirmpasssword}
-              onChange={this.changeHandler}
-            />
-            <div className="col-12">
-              <button
-                style={{ padding: 9, marginTop: 20 }}
-                type="submit"
-                className="btn btn-success col-12 "
-              >
-                CREATE ACCOUNT
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     );

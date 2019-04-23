@@ -21,12 +21,39 @@ class Transfare extends Component {
 
   render() {
     return (
-      <div>
-        <form>
-          <label>NEW OWNER</label>
-          <input onChange={this.handleChange} />
-        </form>
-        <button onClick={this.handleSubmit}>Transfare Ownership</button>
+      <div
+        className="col-10"
+        style={{
+          position: "fixed",
+          top: 80,
+          left: 240,
+          right: 0,
+          padding: 0
+        }}
+      >
+        <div id="content-wrapper">
+          <div className="container-fluid">
+            <div className="card mb-3">
+              <div className="card-header">
+                <i className="fas fa-table" />
+                Devices
+              </div>
+              <div className="card-body">
+                <div className="table-responsive">
+                  <div>
+                    <form>
+                      <label>NEW OWNER</label>
+                      <input onChange={this.handleChange} />
+                    </form>
+                    <button onClick={this.handleSubmit}>
+                      Transfare Ownership
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { NavLink } from "react-router-dom";
 import { Input } from "react-input-component";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
@@ -37,60 +37,137 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="create_account_screen">
-        <div className="create_account_form">
-          <h3>Login</h3>
-          <form onSubmit={this.submitHandler}>
-            {this.state.loginalertUsername ? (
-              <div className="col-12 alert alert-danger" role="alert">
-                Wrong Username
-              </div>
-            ) : (
-              <></>
-            )}
-            <label htmlFor="userName">User Name</label>
-            <Input
-              text="User Name"
-              name="username"
-              value={this.state.username}
-              className="form-control"
-              onChange={this.changeHandler}
-              //   emptyMessage="User Name can't be empty"
-            />
-            {this.state.loginalertPassword ? (
-              <div
-                style={{ marginTop: 20 }}
-                className="col-12 alert alert-danger"
-                role="alert"
-              >
-                Wrong Password
-              </div>
-            ) : (
-              <></>
-            )}
+      // <div className="create_account_screen">
+      //   <div className="create_account_form">
+      //     <h3>Login</h3>
+      //     <form onSubmit={this.submitHandler}>
+      //       {this.state.loginalertUsername ? (
+      //         <div className="col-12 alert alert-danger" role="alert">
+      //           Wrong Username
+      //         </div>
+      //       ) : (
+      //         <></>
+      //       )}
+      //       <label htmlFor="userName">User Name</label>
+      //       <Input
+      //         text="User Name"
+      //         name="username"
+      //         value={this.state.username}
+      //         className="form-control"
+      //         onChange={this.changeHandler}
+      //         //   emptyMessage="User Name can't be empty"
+      //       />
+      //       {this.state.loginalertPassword ? (
+      //         <div
+      //           style={{ marginTop: 20 }}
+      //           className="col-12 alert alert-danger"
+      //           role="alert"
+      //         >
+      //           Wrong Password
+      //         </div>
+      //       ) : (
+      //         <></>
+      //       )}
 
-            <div className="password">
-              <label htmlFor="Password">Password</label>
-              <Input
-                text="Password"
-                type="password"
-                name="password"
-                value={this.state.passsword}
-                //   emptyMessage="Password is invalid"
-                className="form-control"
-                onChange={this.changeHandler}
-              />
+      //       <div className="password">
+      //         <label htmlFor="Password">Password</label>
+      //         <Input
+      //           text="Password"
+      //           type="password"
+      //           name="password"
+      //           value={this.state.passsword}
+      //           //   emptyMessage="Password is invalid"
+      //           className="form-control"
+      //           onChange={this.changeHandler}
+      //         />
+      //       </div>
+      //       <div className="col-12">
+      //         <button
+      //           style={{ padding: 9 }}
+      //           type="submit"
+      //           className="btn btn-success col-12"
+      //         >
+      //           Login
+      //         </button>
+      //       </div>
+      //     </form>
+      //   </div>
+      // </div>
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-xl-10 col-lg-12 col-md-9">
+            <div className="card o-hidden border-0 shadow-lg my-5">
+              <div className="card-body p-0">
+                <div className="row">
+                  <div className="col-lg-6 d-none d-lg-block bg-login-image" />
+                  <div className="col-lg-6">
+                    <div className="p-5">
+                      <div className="text-center">
+                        <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                      </div>
+                      <form onSubmit={this.submitHandler}>
+                        <div className="form-group">
+                          <Input
+                            name="username"
+                            className="form-control form-control-user"
+                            onChange={this.changeHandler}
+                            value={this.state.username}
+                            placeholder="Commercial ID"
+                          />
+                        </div>
+                        <div className="form-group">
+                          <Input
+                            type="password"
+                            className="form-control form-control-user"
+                            name="password"
+                            value={this.state.passsword}
+                            onChange={this.changeHandler}
+                            placeholder="Password"
+                          />
+                        </div>
+
+                        <div className="btn btn-primary btn-user btn-block">
+                          <button
+                            style={{ padding: 9 }}
+                            type="submit"
+                            className="btn  col-12"
+                          >
+                            Login
+                          </button>
+                        </div>
+                        <hr />
+                        {/* <a
+                          href="index.html"
+                          className="btn btn-google btn-user btn-block"
+                        >
+                          <i className="fab fa-google fa-fw" /> Login with
+                          Google
+                        </a>
+                        <a
+                          href="index.html"
+                          className="btn btn-facebook btn-user btn-block"
+                        >
+                          <i className="fab fa-facebook-f fa-fw" /> Login with
+                          Facebook
+                        </a> */}
+                      </form>
+                      <hr />
+                      {/* <div className="text-center">
+                        <a className="small" href="//">
+                          Forgot Password?
+                        </a>
+                      </div> */}
+                      <div className="text-center">
+                        <a className="small">
+                          <NavLink to={`/signup`}>Create an Account!</NavLink>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="col-12">
-              <button
-                style={{ padding: 9 }}
-                type="submit"
-                className="btn btn-success col-12"
-              >
-                Login
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     );
