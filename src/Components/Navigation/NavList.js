@@ -81,10 +81,17 @@ class NavList extends Component {
                   >
                     Add Device
                   </NavLink>
+                  <NavLink
+                    style={{ color: "#fff", textDecoration: "none" }}
+                    className="col-2"
+                    to={`/search`}
+                  >
+                    Search
+                  </NavLink>
 
                   <button
                     onClick={() => this.props.logout(this.props.history)}
-                    className="col-3"
+                    className="col-1"
                     style={{}}
                   >
                     logout
