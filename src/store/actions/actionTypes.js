@@ -11,9 +11,8 @@ export const TRANSFER_OWNERSHIP = "TRANSFER_OWNERSHIP";
 export const GET_DEVICES = "GET_DEVICES";
 
 export const FETCH_DEVICES = "FETCH_DEVICES";
- 
 
 export const FETCH_ALERT_DEVICES = "FETCH_ALERT_DEVICES";
- 
+
 export const FETCH_HISTORY = "FETCH_HISTORY";
- 
+export const FETCH_INFO_BACK = "FETCH_INFO_BACK";
