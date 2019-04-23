@@ -183,9 +183,40 @@ class NavList extends Component {
               onClick={() => this.props.logout(this.props.history)}
               className="btn col-2"
             >
-              <span>Logout</span>
+              {this.props.user ? <span>Logout</span> : <div />}
             </button>
           </li>
+
+          {!this.props.user && (
+            <>
+              <li className="nav-item col-12" style={{ margin: 0, padding: 0 }}>
+                <NavLink
+                  style={{
+                    color: "#fff",
+                    textDecoration: "none",
+                    padding: 10
+                  }}
+                  className="col-12"
+                  to={`/login`}
+                >
+                  Login
+                </NavLink>
+              </li>
+              <li className="nav-item col-12" style={{ margin: 0, padding: 0 }}>
+                <NavLink
+                  style={{
+                    color: "#fff",
+                    textDecoration: "none",
+                    padding: 10
+                  }}
+                  className="col-12"
+                  to={`/signup`}
+                >
+                  Signup
+                </NavLink>
+              </li>
+            </>
+          )}
           <hr />
         </ul>
       </div>
