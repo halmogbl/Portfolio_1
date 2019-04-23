@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 
 //Components
 import Home from "./Components/Home";
-import NavBar from "./Components/Navigation";
+import Navbar from "./Components/Navigation/Navbar";
+import NavList from "./Components/Navigation/NavList";
 import Footer from "./Components/Footer";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/RegistrationForm";
@@ -21,9 +22,13 @@ import AddDevice from "./Components/Home/AddDevice";
 import * as actionCreators from "./store/actions";
 
 //CSS
-import "./assets/css/GridSystem.css";
-import "./assets/css/Custom.css";
-import "./assets/css/animation.css";
+// import "./assets/css/GridSystem.css";
+// import "./assets/css/Custom.css";
+// import "./assets/css/animation.css";
+import "./assets/css/main.css";
+import "./assets/css/main1.css";
+import "./assets/css/sb1.css";
+import "./assets/css/sb2.css";
 
 class App extends Component {
   async componentDidMount() {
@@ -33,11 +38,11 @@ class App extends Component {
   render() {
     return (
       <div className="content-wrapper col-12" style={{}}>
-        <NavBar />
+        <Navbar />
+        <NavList />
         <Switch>
-          <Route path="/Login" component={Login} />
-          <Route path="/signup" component={Signup} />
           <Route exact path="/home" component={Home} />
+          <Route exact path="/login" component={Login} />
           <Route
             path="/home/device/:device_id/transfare"
             component={Transfare}

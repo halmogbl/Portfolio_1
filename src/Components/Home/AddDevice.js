@@ -16,9 +16,52 @@ class AddDevice extends Component {
 
   render() {
     return (
-      <div>
-        <input type="text" onChange={this.DeviceChange} />
-        <button onClick={() => this.props.addDevice(this.state)}>add</button>
+      <div
+        className="col-10"
+        style={{
+          position: "fixed",
+          top: 80,
+          left: 240,
+          right: 0,
+          padding: 0
+        }}
+      >
+        <div id="content-wrapper">
+          <div className="container-fluid">
+            <div className="card mb-3">
+              <div className="card-header">
+                <i className="fas fa-table" />
+                Devices
+              </div>
+              <div className="card-body">
+                <div className="table-responsive">
+                  <table
+                    className="table table-bordered"
+                    id="dataTable"
+                    width="100%"
+                    cellspacing="0"
+                  >
+                    <thead>
+                      <tr>
+                        <th>IMEI</th>
+                      </tr>
+                    </thead>
+                    <tr>
+                      <div>
+                        <input type="text" onChange={this.DeviceChange} />
+                        <button
+                          onClick={() => this.props.addDevice(this.state)}
+                        >
+                          add
+                        </button>
+                      </div>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

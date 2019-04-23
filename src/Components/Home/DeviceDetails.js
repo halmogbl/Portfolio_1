@@ -45,23 +45,54 @@ class DeviceDetails extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.device && this.state.device.is_alerted ? (
-          <button onClick={this.handleAlertFalse}>Remove Alert</button>
-        ) : (
-          <>
-            <NavLink
-              to={`/home/device/${this.props.match.params.device_id}/transfare`}
-            >
-              Transfare
-            </NavLink>
-            <button onClick={this.handleAlertTrue}>Alert</button>
-          </>
-        )}
+      <div
+        className="col-10"
+        style={{
+          // color: "#fff",
+          position: "fixed",
+          top: 80,
+          left: 240,
+          right: 0,
+          padding: 0
+        }}
+      >
+        <div id="content-wrapper">
+          <div className="container-fluid">
+            <div className="card mb-3">
+              <div className="card-header">
+                <i className="fas fa-table" />
+                Devices
+              </div>
+              <div className="card-body">
+                <div className="table-responsive">
+                  <div>
+                    {this.state.device && this.state.device.is_alerted ? (
+                      <button onClick={this.handleAlertFalse}>
+                        Remove Alert
+                      </button>
+                    ) : (
+                      <>
+                        <NavLink
+                          to={`/home/device/${
+                            this.props.match.params.device_id
+                          }/transfare`}
+                        >
+                          Transfare
+                        </NavLink>
+                        <button onClick={this.handleAlertTrue}>Alert</button>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
+
 const mapStateToProps = state => ({
   user: state.auth.user,
   devices: state.deviceReducer.devices

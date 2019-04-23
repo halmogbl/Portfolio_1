@@ -18,23 +18,67 @@ class Search extends Component {
   }
   render() {
     return (
-      <div>
-        <div>
-          <h3>Sekail - Alert devices search</h3>
-          <div>
-            <input
-              type="text"
-              onChange={this.handleChange}
-              placeholder="type IEMI here"
-            />
-            <button onClick={() => this.handleSubmit()}> Search</button>
+      // <div>
+      //   <div>
+      //     <h3>Sekail - Alert devices search</h3>
+      //     <div>
+      //       <input
+      //         type="text"
+      //         onChange={this.handleChange}
+      //         placeholder="type IEMI here"
+      //       />
+      //       <button onClick={() => this.handleSubmit()}> Search</button>
+      //     </div>
+      //     {this.props.alert && <div> this device is Alerted :</div>}
+      //   </div>
+      // </div>
+      <div
+        className="col-10"
+        style={{
+          // color: "#fff",
+          position: "fixed",
+          top: 80,
+          left: 240,
+          right: 0,
+          padding: 0
+        }}
+      >
+        <div id="content-wrapper">
+          <div className="container-fluid">
+            <div className="card mb-3">
+              <div className="card-header">
+                <i className="fas fa-table" />
+                Devices
+              </div>
+              <div className="card-body">
+                <div className="table-responsive">
+                  <div>
+                    <div>
+                      <h3>Sekail - Alert devices search</h3>
+                      <div>
+                        <input
+                          type="text"
+                          onChange={this.handleChange}
+                          placeholder="type IEMI here"
+                        />
+                        <button onClick={() => this.handleSubmit()}>
+                          {" "}
+                          Search
+                        </button>
+                      </div>
+                      {this.props.alert && <div> this device is Alerted :</div>}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          {this.props.alert && <div> this device is Alerted :</div>}
         </div>
       </div>
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     devices: state.deviceReducer.devices,

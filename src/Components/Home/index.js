@@ -20,8 +20,49 @@ class Home extends Component {
     ));
 
     return (
-      <div>
-        <ul>{ListDevices}</ul>
+      // <div>
+      //   <ul>{ListDevices}</ul>
+      // </div>
+      <div
+        className="col-10"
+        style={{
+          // color: "#fff",
+          position: "fixed",
+          top: 80,
+          left: 240,
+          right: 0,
+          padding: 0
+        }}
+      >
+        <div id="content-wrapper">
+          <div className="container-fluid">
+            <div className="card mb-3">
+              <div className="card-header">
+                <i className="fas fa-table" />
+                Devices
+              </div>
+              <div className="card-body">
+                <div className="table-responsive">
+                  <table
+                    className="table table-bordered"
+                    id="dataTable"
+                    width="100%"
+                    cellspacing="0"
+                  >
+                    <thead>
+                      <tr>
+                        <th>IMEI</th>
+                      </tr>
+                    </thead>
+                    <tr>
+                      <th>{ListDevices}</th>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
