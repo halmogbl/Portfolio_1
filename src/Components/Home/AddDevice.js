@@ -27,32 +27,38 @@ class AddDevice extends Component {
         }}
       >
         <div id="content-wrapper">
-          <div className="container-fluid">
-            <div className="card mb-3">
-              <div className="card-header">
+          <div className="container-fluid col-12">
+            <div className="card mb-3 ">
+              <div className="card-header col-12">
                 <i className="fas fa-table" />
-                Devices
+                Add New Device
               </div>
-              <div className="card-body">
-                <div className="table-responsive">
+              <div className="card-body  col-12">
+                <div className="table-responsive  col-12">
                   <table
-                    className="table table-bordered"
+                    className="table table-bordered "
                     id="dataTable"
                     width="100%"
                     cellspacing="0"
                   >
                     <thead>
                       <tr>
-                        <th>IMEI</th>
+                        <th>NEW IMEI</th>
                       </tr>
                     </thead>
                     <tr>
                       <div>
                         <input type="text" onChange={this.DeviceChange} />
                         <button
+                          className="btn btn-success"
+                          style={{
+                            padding: 10,
+                            margin: 10,
+                            background: "#green"
+                          }}
                           onClick={() => this.props.addDevice(this.state)}
                         >
-                          add
+                          Add
                         </button>
                       </div>
                     </tr>

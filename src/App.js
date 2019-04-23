@@ -22,7 +22,7 @@ import AddDevice from "./Components/Home/AddDevice";
 import * as actionCreators from "./store/actions";
 
 //CSS
-// import "./assets/css/GridSystem.css";
+import "./assets/css/GridSystem.css";
 // import "./assets/css/Custom.css";
 // import "./assets/css/animation.css";
 import "./assets/css/main.css";

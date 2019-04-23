@@ -67,19 +67,30 @@ class DeviceDetails extends Component {
                 <div className="table-responsive">
                   <div>
                     {this.state.device && this.state.device.is_alerted ? (
-                      <button onClick={this.handleAlertFalse}>
+                      <button
+                        className="btn btn-warning"
+                        style={{ color: "#000" }}
+                        onClick={this.handleAlertFalse}
+                      >
                         Remove Alert
                       </button>
                     ) : (
                       <>
                         <NavLink
+                          className="btn btn-success"
                           to={`/home/device/${
                             this.props.match.params.device_id
                           }/transfare`}
                         >
-                          Transfare
+                          Transfare Ownership
                         </NavLink>
-                        <button onClick={this.handleAlertTrue}>Alert</button>
+                        <button
+                          style={{ marginLeft: 10 }}
+                          className="btn btn-danger"
+                          onClick={this.handleAlertTrue}
+                        >
+                          Alert
+                        </button>
                       </>
                     )}
                   </div>

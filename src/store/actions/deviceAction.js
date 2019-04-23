@@ -84,6 +84,7 @@ export const fetchAlertDevices = iemi_id => {
         dispatch(infoBack(alert));
       } else {
         console.log("cant send empty");
+        await dispatch(notFound());
       }
       dispatch({
         type: actionTypes.FETCH_ALERT_DEVICES,
@@ -113,5 +114,14 @@ export const infoBack = user => {
     } catch (err) {
       console.error("Error while fetching Alert devices", err);
     }
+  };
+};
+
+export const notFound = () => {
+  return async dispatch => {
+    dispatch({
+      type: actionTypes.NOTINDATA,
+      payload: false
+    });
   };
 };

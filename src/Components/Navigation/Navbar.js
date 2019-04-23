@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
   render() {
@@ -11,11 +12,17 @@ export default class Navbar extends Component {
           top: 0,
           left: 0,
           right: 0,
-          padding: 0
+          padding: 0,
+          background: "#212529"
         }}
       >
-        <nav className="navbar navbar-expand navbar-dark bg-dark static-top">
-          <a className="navbar-brand">SEKEAL</a>
+        <nav
+          className="navbar navbar-expand navbar-dark bg-dark static-top"
+          style={{}}
+        >
+          <Link className="navbar-brand" to={`/home`}>
+            SEKIAL
+          </Link>
         </nav>
       </div>
     );

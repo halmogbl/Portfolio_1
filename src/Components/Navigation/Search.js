@@ -18,20 +18,6 @@ class Search extends Component {
   }
   render() {
     return (
-      // <div>
-      //   <div>
-      //     <h3>Sekail - Alert devices search</h3>
-      //     <div>
-      //       <input
-      //         type="text"
-      //         onChange={this.handleChange}
-      //         placeholder="type IEMI here"
-      //       />
-      //       <button onClick={() => this.handleSubmit()}> Search</button>
-      //     </div>
-      //     {this.props.alert && <div> this device is Alerted :</div>}
-      //   </div>
-      // </div>
       <div
         className="col-10"
         style={{
@@ -54,19 +40,34 @@ class Search extends Component {
                 <div className="table-responsive">
                   <div>
                     <div>
-                      <h3>Sekail - Alert devices search</h3>
+                      <h3>Search in Alerted Devices </h3>
                       <div>
                         <input
                           type="text"
                           onChange={this.handleChange}
                           placeholder="type IEMI here"
+                          className="form-control col-4"
                         />
-                        <button onClick={() => this.handleSubmit()}>
+                        <button
+                          onClick={() => this.handleSubmit()}
+                          className="btn btn-info"
+                        >
                           {" "}
                           Search
                         </button>
                       </div>
-                      {this.props.alert && <div> this device is Alerted :</div>}
+                      {this.props.alert && (
+                        <div>
+                          {" "}
+                          this device is marked as{" "}
+                          <span className="text-danger">Alerted :</span>{" "}
+                        </div>
+                      )}
+                      {!this.props.notfound ? (
+                        <div className=" text-success"> Safe </div>
+                      ) : (
+                        <div />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -82,7 +83,8 @@ class Search extends Component {
 const mapStateToProps = state => {
   return {
     devices: state.deviceReducer.devices,
-    alert: state.deviceReducer.alert
+    alert: state.deviceReducer.alert,
+    notfound: state.deviceReducer.notfound
   };
 };
 const mapDispatchToProps = dispatch => {

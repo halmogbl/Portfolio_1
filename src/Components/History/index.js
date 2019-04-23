@@ -45,9 +45,16 @@ class History extends Component {
                         <th>History</th>
                       </tr>
                     </thead>
-                    <tr>
-                      <th>{History}</th>
-                    </tr>
+                    <div
+                      style={{
+                        overflow: "scroll",
+                        height: "500px",
+                        marginBottom: 10,
+                        padding: 0
+                      }}
+                    >
+                      {History}
+                    </div>
                   </table>
                 </div>
               </div>

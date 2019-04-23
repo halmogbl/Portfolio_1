@@ -18,6 +18,7 @@ class Home extends Component {
     const ListDevices = this.props.devices.map(device => (
       <DeviceList key={device.id} device={device} />
     ));
+    console.log(this.props.devices);
 
     return (
       // <div>
@@ -34,17 +35,17 @@ class Home extends Component {
           padding: 0
         }}
       >
-        <div id="content-wrapper">
+        <div id="content-wrapper col-12">
           <div className="container-fluid">
             <div className="card mb-3">
-              <div className="card-header">
+              <div className="card-header col-12">
                 <i className="fas fa-table" />
-                Devices
+                My Devices
               </div>
-              <div className="card-body">
-                <div className="table-responsive">
+              <div className="card-body col-12">
+                <div className="table-responsive col-12">
                   <table
-                    className="table table-bordered"
+                    className="table table-bordered col-12"
                     id="dataTable"
                     width="100%"
                     cellspacing="0"
@@ -54,9 +55,7 @@ class Home extends Component {
                         <th>IMEI</th>
                       </tr>
                     </thead>
-                    <tr>
-                      <th>{ListDevices}</th>
-                    </tr>
+                    <div>{ListDevices}</div>
                   </table>
                 </div>
               </div>
