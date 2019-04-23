@@ -56,7 +56,9 @@ class AddDevice extends Component {
                             margin: 10,
                             background: "#green"
                           }}
-                          onClick={() => this.props.addDevice(this.state)}
+                          onClick={() =>
+                            this.props.addDevice(this.state, this.props.history)
+                          }
                         >
                           Add
                         </button>
@@ -75,7 +77,8 @@ class AddDevice extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addDevice: device => dispatch(actionCreators.addDevice(device))
+    addDevice: (device, history) =>
+      dispatch(actionCreators.addDevice(device, history))
   };
 };
 

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   render() {
     return (
       <div
@@ -17,14 +18,53 @@ export default class Navbar extends Component {
         }}
       >
         <nav
-          className="navbar navbar-expand navbar-dark bg-dark static-top"
+          className="navbar navbar-expand navbar-dark bg-dark static-top col-12"
           style={{}}
         >
-          <Link className="navbar-brand" to={`/home`}>
+          <Link className="navbar-brand col-6" to={`/home`}>
             SEKIAL
           </Link>
+          {this.props.user ? (
+            <div />
+          ) : (
+            <>
+              <Link
+                style={{
+                  color: "#fff",
+                  textDecoration: "none",
+                  padding: 10
+                }}
+                className="col-2"
+                to={`/login`}
+              >
+                Login
+              </Link>
+
+              <Link
+                style={{
+                  color: "#fff",
+                  textDecoration: "none",
+                  padding: 10
+                }}
+                className="col-2"
+                to={`/signup`}
+              >
+                Signup
+              </Link>
+            </>
+          )}
         </nav>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user
+  };
+};
+export default connect(
+  mapStateToProps,
+  null
+)(Navbar);

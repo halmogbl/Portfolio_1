@@ -85,11 +85,11 @@ class RegistationForm extends Component {
   // isConfirmedPassword = e => {
   //   return e === this.state.password;
   // };
-  // handleEmailInput = e => {
-  //   this.setState({
-  //     email: e.target.value
-  //   });
-  // };
+  handleEmailInput = e => {
+    this.setState({
+      email: e.target.value
+    });
+  };
 
   // validateEmail = e => {
   //   let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -223,7 +223,10 @@ class RegistationForm extends Component {
       //     </form>
       //   </div>
       // </div>
-      <div className="card o-hidden border-0 shadow-lg my-5  col-12">
+      <div
+        style={{ marginTop: "125px" }}
+        className="card o-hidden border-0 shadow-lg   col-12"
+      >
         <div className="card-body p-0">
           <div className="row">
             <div className="col-lg-5 d-none d-lg-block bg-register-image  col-12" />
@@ -231,7 +234,7 @@ class RegistationForm extends Component {
               <div className="p-5">
                 <div className="text-center  col-12">
                   <h1 className="h4 text-gray-900 mb-4  col-12">
-                    Create an Account!
+                    Create Account
                   </h1>
                 </div>
                 <form onSubmit={this.submitHandler}>
@@ -296,39 +299,14 @@ class RegistationForm extends Component {
                       CREATE ACCOUNT
                     </button>
                   </div>
-                  {/* <a
-                      className="btn btn-primary btn-user btn-block"
-                      type="submit"
-                    >
-                      Register Account
-                    </a> */}
+
                   <hr />
-                  {/* <a href="/" className="btn btn-google btn-user btn-block">
-                      <i className="fab fa-google fa-fw" /> Register with Google
-                    </a>
-                    <a href="/" className="btn btn-facebook btn-user btn-block">
-                      <i className="fab fa-facebook-f fa-fw" /> Register with
-                      Facebook
-                    </a> */}
                 </form>
                 <hr />
                 <div className="text-center">
-                  <a className="small" href="/">
-                    Forgot Password?
-                  </a>
-                </div>
-                <div className="text-center">
                   <a href="/" className="small">
-                    Already have an account? Login!
+                    Already have an account? Login
                   </a>
-                  {/* <Link
-                      to={"login" ? "/signup" : "/login"}
-                      className="btn btn-small btn-link"
-                    >
-                      {"login"
-                        ? "register an account"
-                        : "login with an existing account"}
-                    </Link> */}
                 </div>
               </div>
             </div>
