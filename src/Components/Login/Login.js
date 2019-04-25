@@ -8,9 +8,7 @@ import "../../assets/css/Auth.css";
 class Login extends Component {
   state = {
     username: "",
-    password: "",
-    loginalertUsername: false,
-    loginalertPassword: false
+    password: ""
   };
 
   changeHandler = e => {
@@ -36,63 +34,8 @@ class Login extends Component {
   };
 
   render() {
+    console.log("here is ", this.props.errors);
     return (
-      // <div className="create_account_screen">
-      //   <div className="create_account_form">
-      //     <h3>Login</h3>
-      //     <form onSubmit={this.submitHandler}>
-      //       {this.state.loginalertUsername ? (
-      //         <div className="col-12 alert alert-danger" role="alert">
-      //           Wrong Username
-      //         </div>
-      //       ) : (
-      //         <></>
-      //       )}
-      //       <label htmlFor="userName">User Name</label>
-      //       <Input
-      //         text="User Name"
-      //         name="username"
-      //         value={this.state.username}
-      //         className="form-control"
-      //         onChange={this.changeHandler}
-      //         //   emptyMessage="User Name can't be empty"
-      //       />
-      //       {this.state.loginalertPassword ? (
-      //         <div
-      //           style={{ marginTop: 20 }}
-      //           className="col-12 alert alert-danger"
-      //           role="alert"
-      //         >
-      //           Wrong Password
-      //         </div>
-      //       ) : (
-      //         <></>
-      //       )}
-
-      //       <div className="password">
-      //         <label htmlFor="Password">Password</label>
-      //         <Input
-      //           text="Password"
-      //           type="password"
-      //           name="password"
-      //           value={this.state.passsword}
-      //           //   emptyMessage="Password is invalid"
-      //           className="form-control"
-      //           onChange={this.changeHandler}
-      //         />
-      //       </div>
-      //       <div className="col-12">
-      //         <button
-      //           style={{ padding: 9 }}
-      //           type="submit"
-      //           className="btn btn-success col-12"
-      //         >
-      //           Login
-      //         </button>
-      //       </div>
-      //     </form>
-      //   </div>
-      // </div>
       <div className="container">
         <div className="row justify-content-center" style={{ marginTop: 125 }}>
           <div className="col-xl-10 col-lg-12 col-md-9">
@@ -106,6 +49,11 @@ class Login extends Component {
                         <h1 className="h4 text-gray-900 mb-4">
                           Shop Dashboard
                         </h1>
+                        {this.props.errors.length > 1 && (
+                          <div class="col-12 alert alert-danger" role="alert">
+                            {this.props.errors}
+                          </div>
+                        )}
                       </div>
                       <form onSubmit={this.submitHandler}>
                         <div
@@ -120,6 +68,19 @@ class Login extends Component {
                             placeholder="Commercial ID"
                           />
                         </div>
+
+                        {/* {this.state.loginalertPassword ? (
+                          <div
+                            style={{ marginTop: 20 }}
+                            className="col-12 alert alert-danger"
+                            role="alert"
+                          >
+                            Wrong Password
+                          </div>
+                        ) : (
+                          <></>
+                        )} */}
+
                         <div
                           className="form-group col-12"
                           style={{ padding: 0 }}
@@ -180,7 +141,9 @@ class Login extends Component {
     );
   }
 }
-
+const mapStateToProps = state => ({
+  errors: state.errorReducer.errors
+});
 const mapDispatchToProps = dispatch => {
   return {
     login: (userData, history) =>
@@ -189,6 +152,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Login);

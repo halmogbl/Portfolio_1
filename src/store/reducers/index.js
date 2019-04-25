@@ -8,7 +8,7 @@ import transferOwnershipReducer from "./transferOwnership";
 import historyReducer from "./history";
 export default combineReducers({
   auth: authReducer,
-  errors: errorReducer,
+  errorReducer: errorReducer,
   deviceReducer: deviceReducer,
   transferOwnershipReducer: transferOwnershipReducer,
   historyReducer: historyReducer
