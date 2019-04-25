@@ -49,7 +49,7 @@ class Login extends Component {
                         <h1 className="h4 text-gray-900 mb-4">
                           Shop Dashboard
                         </h1>
-                        {this.props.errors.length > 1 && (
+                        {this.props.errors.length != 0 && (
                           <div class="col-12 alert alert-danger" role="alert">
                             {this.props.errors}
                           </div>

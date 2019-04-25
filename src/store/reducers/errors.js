@@ -11,10 +11,10 @@ const reducer = (state = initialState, action) => {
     case SET_ERRORS:
       return {
         ...state,
-        errors: action.payload
-        // errors: Object.keys(action.payload).map(
-        //   key => `${key}: ${action.payload[key]}`
-        // )
+        // errors: action.payload
+        errors: Object.keys(action.payload).map(
+          key => `${key}: ${action.payload[key]}`
+        )
       };
     default:
       return state;

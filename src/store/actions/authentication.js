@@ -55,7 +55,7 @@ export const login = (userData, history) => {
 
       console.log("error", error);
 
-      dispatch(setErrors(error.response.request.responseText));
+      dispatch(setErrors(error.response.data));
     }
   };
 };
