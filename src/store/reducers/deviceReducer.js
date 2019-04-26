@@ -6,8 +6,7 @@ const initialState = {
   AddedDevice: "",
   deviceDetail: null,
   deviceDetailLoading: true,
-  alert: false,
-  notfound: true
+  alert: []
 };
 
 const deviceReducer = (state = initialState, action) => {
@@ -27,14 +26,13 @@ const deviceReducer = (state = initialState, action) => {
     case actionTypes.FETCH_ALERT_DEVICES:
       return {
         ...state,
-        alert: action.payload.length === 1 ? true : false
+        alert: action.payload
       };
-    case actionTypes.NOTINDATA:
+    case actionTypes.RESET:
       return {
         ...state,
-        notfound: action.payload
+        alert: action.payload
       };
-
     default:
       return state;
   }

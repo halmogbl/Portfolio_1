@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
+import { setErrors, resetError } from "./errors";
 
 const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/"
@@ -74,55 +75,30 @@ export const changeAlertStatusFalse = (user, deviceID, history) => {
 };
 
 export const fetchAlertDevices = iemi_id => {
-  console.log("Actions iemi", iemi_id);
-
   return async dispatch => {
+    dispatch(reset());
+    dispatch(resetError());
+
     try {
-      const res = await instance.get(`alert/list/?search=${iemi_id}`);
+      const res = await instance.get(`alert/${iemi_id}/`);
       const alert = res.data;
-      console.log("Actions alert after editing ", alert);
-      if (alert.length !== 0) {
-        dispatch(infoBack(alert));
-      } else {
-        console.log("cant send empty");
-        await dispatch(notFound());
-      }
+
       dispatch({
         type: actionTypes.FETCH_ALERT_DEVICES,
         payload: alert
       });
     } catch (err) {
       console.error("Error while fetching Alert devices", err);
+      dispatch(setErrors(err.response.data));
     }
   };
 };
 
-export const infoBack = user => {
-  console.log("infoback", user);
-  return async dispatch => {
-    try {
-      let userObj = {
-        email: user[0].user.email,
-        phone_number: user[0].user.phone_number,
-        iemi_id: user[0].iemi_id
-      };
-      const res = await instance.post(`alert/mail/create/`, userObj);
-      const info = res.data;
-      dispatch({
-        type: actionTypes.FETCH_INFO_BACK,
-        payload: info
-      });
-    } catch (err) {
-      console.error("Error while fetching Alert devices", err);
-    }
-  };
-};
-
-export const notFound = () => {
+export const reset = () => {
   return async dispatch => {
     dispatch({
-      type: actionTypes.NOTINDATA,
-      payload: false
+      type: actionTypes.RESET,
+      payload: ""
     });
   };
 };

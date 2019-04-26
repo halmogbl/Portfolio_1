@@ -34,7 +34,8 @@ class Login extends Component {
   };
 
   render() {
-    console.log("here is ", this.props.errors);
+    const errors = this.props.errors;
+
     return (
       <div className="container">
         <div className="row justify-content-center" style={{ marginTop: 125 }}>
@@ -49,9 +50,20 @@ class Login extends Component {
                         <h1 className="h4 text-gray-900 mb-4">
                           Shop Dashboard
                         </h1>
-                        {this.props.errors.length != 0 && (
-                          <div class="col-12 alert alert-danger" role="alert">
+                        {/* {this.props.errors.length !== 0 && (
+                          <div
+                            className="col-12 alert alert-danger"
+                            role="alert"
+                          >
                             {this.props.errors}
+                          </div>
+                        )} */}
+
+                        {!!errors.length && (
+                          <div className="alert alert-danger" role="alert">
+                            {errors.map(error => (
+                              <p key={error}>{error}</p>
+                            ))}
                           </div>
                         )}
                       </div>
@@ -68,18 +80,6 @@ class Login extends Component {
                             placeholder="Commercial ID"
                           />
                         </div>
-
-                        {/* {this.state.loginalertPassword ? (
-                          <div
-                            style={{ marginTop: 20 }}
-                            className="col-12 alert alert-danger"
-                            role="alert"
-                          >
-                            Wrong Password
-                          </div>
-                        ) : (
-                          <></>
-                        )} */}
 
                         <div
                           className="form-group col-12"
@@ -104,31 +104,11 @@ class Login extends Component {
                         </button>
 
                         <hr />
-                        {/* <a
-                          href="index.html"
-                          className="btn btn-google btn-user btn-block"
-                        >
-                          <i className="fab fa-google fa-fw" /> Login with
-                          Google
-                        </a>
-                        <a
-                          href="index.html"
-                          className="btn btn-facebook btn-user btn-block"
-                        >
-                          <i className="fab fa-facebook-f fa-fw" /> Login with
-                          Facebook
-                        </a> */}
                       </form>
                       <hr />
-                      {/* <div className="text-center">
-                        <a className="small" href="//">
-                          Forgot Password?
-                        </a>
-                      </div> */}
+
                       <div className="text-center">
-                        <a className="small">
-                          <NavLink to={`/signup`}>Create an Account!</NavLink>
-                        </a>
+                        <NavLink to={`/signup`}>Create an Account!</NavLink>
                       </div>
                     </div>
                   </div>

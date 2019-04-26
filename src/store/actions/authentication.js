@@ -49,12 +49,7 @@ export const login = (userData, history) => {
       dispatch(setCurrentUser(decodedUser));
       history.push("/home");
     } catch (error) {
-      // console.error("username", error.response.data.username);
-      // console.error("password", error.response.data.password);
-      // console.error("HD", error.response.request.responseText);
-
       console.log("error", error);
-
       dispatch(setErrors(error.response.data));
     }
   };

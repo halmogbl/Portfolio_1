@@ -1,20 +1,22 @@
-import { SET_ERRORS } from "../actions/actionTypes";
-import { request } from "http";
+import { SET_ERRORS, RESET_ERROR } from "../actions/actionTypes";
 
 const initialState = {
   errors: []
 };
 
 const reducer = (state = initialState, action) => {
-  console.log("Reducer error", action.payload);
   switch (action.type) {
     case SET_ERRORS:
       return {
         ...state,
-        // errors: action.payload
         errors: Object.keys(action.payload).map(
           key => `${key}: ${action.payload[key]}`
         )
+      };
+    case RESET_ERROR:
+      return {
+        ...state,
+        errors: action.payload
       };
     default:
       return state;
