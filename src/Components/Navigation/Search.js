@@ -12,8 +12,6 @@ class Search extends Component {
   };
 
   handleSubmit(event) {
-    event.preventDefault();
-
     this.props.fetchAlertDevices(this.state.iemi_id);
   }
   render() {

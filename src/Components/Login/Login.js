@@ -34,8 +34,6 @@ class Login extends Component {
   };
 
   render() {
-    const errors = this.props.errors;
-
     return (
       <div className="container">
         <div className="row justify-content-center" style={{ marginTop: 125 }}>
@@ -46,23 +44,14 @@ class Login extends Component {
                   <div className="col-lg-6 d-none d-lg-block bg-login-image" />
                   <div className="col-lg-6">
                     <div className="p-5">
-                      <div className="text-center">
+                      <div className="text-left">
                         <h1 className="h4 text-gray-900 mb-4">
                           Shop Dashboard
                         </h1>
-                        {/* {this.props.errors.length !== 0 && (
-                          <div
-                            className="col-12 alert alert-danger"
-                            role="alert"
-                          >
-                            {this.props.errors}
-                          </div>
-                        )} */}
-
-                        {!!errors.length && (
+                        {!!this.props.errors.length && (
                           <div className="alert alert-danger" role="alert">
-                            {errors.map(error => (
-                              <p key={error}>{error}</p>
+                            {this.props.errors.map(error => (
+                              <li key={error}>{error}</li>
                             ))}
                           </div>
                         )}

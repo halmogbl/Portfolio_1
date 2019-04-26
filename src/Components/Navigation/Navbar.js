@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import * as actionCreators from "../../store/actions";
+import { withRouter } from "react-router-dom";
 
 class Navbar extends Component {
   render() {
@@ -25,7 +27,14 @@ class Navbar extends Component {
             SEKIAL
           </Link>
           {this.props.user ? (
-            <div />
+            <div>
+              <button
+                onClick={() => this.props.logout(this.props.history)}
+                className="btn col-2"
+              >
+                {this.props.user ? <span>Logout</span> : <div />}
+              </button>
+            </div>
           ) : (
             <>
               <Link
@@ -64,7 +73,14 @@ const mapStateToProps = state => {
     user: state.auth.user
   };
 };
-export default connect(
-  mapStateToProps,
-  null
-)(Navbar);
+
+const mapDispatchToProps = dispatch => ({
+  logout: history => dispatch(actionCreators.logout(history))
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Navbar)
+);

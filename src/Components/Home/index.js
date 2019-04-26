@@ -18,16 +18,12 @@ class Home extends Component {
     const ListDevices = this.props.devices.map(device => (
       <DeviceList key={device.id} device={device} />
     ));
-    console.log(this.props.devices);
-    console.log("from home", this.props.user);
     return (
       <>
         {this.props.user ? (
           <div
             className="col-10"
             style={{
-              // color: "#fff",
-              position: "fixed",
               top: 80,
               left: 240,
               right: 0,
@@ -36,27 +32,32 @@ class Home extends Component {
           >
             <div id="content-wrapper col-12">
               <div className="container-fluid">
-                <div className="card mb-3">
-                  <div className="card-header col-12">
-                    <i className="fas fa-table" />
-                    My Devices
-                  </div>
-                  <div className="card-body col-12">
-                    <div className="table-responsive col-12">
-                      <table
-                        className="table table-bordered col-12"
-                        id="dataTable"
-                        width="100%"
-                        cellspacing="0"
-                      >
-                        <thead>
-                          <tr>
-                            <th>IMEI</th>
-                          </tr>
-                        </thead>
-                        <div>{ListDevices}</div>
-                      </table>
-                    </div>
+                <div className="card-body col-12">
+                  <div className="table-responsive col-12">
+                    <table
+                      className="table table-bordered col-12"
+                      id="dataTable"
+                      width="100%"
+                    >
+                      <thead>
+                        <tr>
+                          <th>IMEI</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <div
+                          style={{
+                            overflow: "scroll",
+                            height: "500px",
+                            marginBottom: 10,
+                            padding: 0
+                          }}
+                        >
+                          {ListDevices}
+                        </div>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
