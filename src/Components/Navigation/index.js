@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import NavList from "./NavList";
+import Navbar from "./Navbar";
 
 class Navigation extends Component {
   render() {
     return (
-      <div className="col-12">
+      <>
+        <Navbar />
         <NavList />
-      </div>
+      </>
     );
   }
 }
