@@ -27,14 +27,12 @@ class Navbar extends Component {
             SEKIAL
           </Link>
           {this.props.user ? (
-            <div>
-              <button
-                onClick={() => this.props.logout(this.props.history)}
-                className="btn col-2"
-              >
-                {this.props.user ? <span>Logout</span> : <div />}
-              </button>
-            </div>
+            <button
+              onClick={() => this.props.logout(this.props.history)}
+              className="btn col-10"
+            >
+              {this.props.user ? <span>Logout</span> : <div />}
+            </button>
           ) : (
             <>
               <Link
@@ -77,7 +75,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   logout: history => dispatch(actionCreators.logout(history))
 });
-
 export default withRouter(
   connect(
     mapStateToProps,

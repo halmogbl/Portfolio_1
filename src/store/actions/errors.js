@@ -12,3 +12,12 @@ export const resetError = () => {
     });
   };
 };
+
+export const reset = () => {
+  return async dispatch => {
+    dispatch({
+      type: actionTypes.RESET,
+      payload: ""
+    });
+  };
+};

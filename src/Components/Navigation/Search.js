@@ -7,6 +7,11 @@ class Search extends Component {
     iemi_id: ""
   };
 
+  componentWillUnmount() {
+    this.props.errors.length && this.props.resetError();
+    this.props.errors && this.props.reset();
+  }
+
   handleChange = event => {
     this.setState({ iemi_id: event.target.value });
   };
@@ -100,7 +105,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchAlertDevices: iemi_id =>
-      dispatch(actionCreators.fetchAlertDevices(iemi_id))
+      dispatch(actionCreators.fetchAlertDevices(iemi_id)),
+    resetError: () => dispatch(actionCreators.resetError()),
+    reset: () => dispatch(actionCreators.reset())
   };
 };
 export default connect(

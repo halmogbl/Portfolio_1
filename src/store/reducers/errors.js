@@ -1,7 +1,8 @@
-import { SET_ERRORS, RESET_ERROR } from "../actions/actionTypes";
+import { SET_ERRORS, RESET_ERROR, RESET } from "../actions/actionTypes";
 
 const initialState = {
-  errors: []
+  errors: [],
+  reset: ""
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         errors: action.payload
+      };
+    case RESET:
+      return {
+        ...state,
+        reset: action.payload
       };
     default:
       return state;

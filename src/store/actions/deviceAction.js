@@ -8,6 +8,8 @@ const instance = axios.create({
 
 export const addDevice = (device, history) => {
   return async dispatch => {
+    dispatch(resetError());
+
     try {
       const res = await instance.post(`device/create/`, device);
       const newdevice = res.data;
@@ -18,6 +20,7 @@ export const addDevice = (device, history) => {
       });
     } catch (error) {
       console.error(error);
+      dispatch(setErrors(error.response.data));
     }
   };
 };
