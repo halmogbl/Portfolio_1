@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
 import { withRouter } from "react-router-dom";
 import { NavLink, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 class Navbar extends Component {
   render() {
     return this.props.user ? (
-      <div className="col-12 navbar navbar-expand navbar-dark bg-dark static-top ">
+      <div className="col-12 navbar navbar-expand navbar-dark bg-dark static-top linerBackgroundNav">
         <Link className="navbar-brand  col-3 text-left" to={`/home`}>
           SEKIAL
         </Link>
@@ -15,7 +17,10 @@ class Navbar extends Component {
           onClick={() => this.props.logout(this.props.history)}
           className="btn  col-9 text-right"
         >
-          Logout
+          <FontAwesomeIcon
+            style={{ fontSize: 25, color: "#fff" }}
+            icon={faSignOutAlt}
+          />
         </button>
       </div>
     ) : (

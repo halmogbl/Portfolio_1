@@ -29,9 +29,12 @@ class AddDevice extends Component {
         }}
       >
         <div id="content-wrapper">
-          <div className="container-fluid col-12">
+          <div className="container-fluid col-11" style={{ marginLeft: 40 }}>
             <div className="card mb-3 ">
-              <div className="card-header col-12">
+              <div
+                className="card-header col-12"
+                style={{ backgroundColor: "#0d6675", color: "#fff" }}
+              >
                 <i className="fas fa-table" />
                 Add New Device
               </div>
@@ -50,25 +53,28 @@ class AddDevice extends Component {
                           ))}
                         </div>
                       )}
-                      <tr>
-                        <th>NEW IMEI</th>
-                      </tr>
                     </thead>
                     <tr>
                       <div>
-                        <input type="text" onChange={this.DeviceChange} />
+                        <input
+                          style={{ width: "30%" }}
+                          type="text"
+                          onChange={this.DeviceChange}
+                        />
                         <button
-                          className="btn btn-success"
+                          className="btn"
                           style={{
                             padding: 10,
                             margin: 10,
-                            background: "#green"
+                            background: "#green",
+                            backgroundColor: "#0d6675",
+                            color: "#fff"
                           }}
                           onClick={() =>
                             this.props.addDevice(this.state, this.props.history)
                           }
                         >
-                          Add
+                          Add Device
                         </button>
                       </div>
                     </tr>

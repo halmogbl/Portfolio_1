@@ -21,29 +21,20 @@ class Home extends Component {
     return (
       <>
         {this.props.user ? (
-          <div
-            // className="col-10"
-            style={{
-              // color: "#fff",
-              position: "fixed",
-              top: 80,
-              left: 240,
-              right: 0,
-              padding: 0
-            }}
-          >
+          <div className="col-10">
             <div id="content-wrapper col-12">
               <div className="container-fluid">
                 <div className="card-body col-12">
                   <div className="table-responsive col-12">
                     <table
-                      className="table table-bordered col-12"
+                      className="table table-bordered col-12 backgroundTable"
                       id="dataTable"
                       width="100%"
+                      style={{ height: 200 }}
                     >
-                      <thead>
+                      <thead style={{ backgroundColor: "#0d6675" }}>
                         <tr>
-                          <th>IMEI</th>
+                          <th style={{ color: "#fff" }}>IMEI</th>
                         </tr>
                       </thead>
 
@@ -53,7 +44,7 @@ class Home extends Component {
                             overflow: "scroll",
                             height: "500px",
                             marginBottom: 10,
-                            padding: 0
+                            padding: 20
                           }}
                         >
                           {ListDevices}

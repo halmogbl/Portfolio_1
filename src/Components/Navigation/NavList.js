@@ -9,22 +9,27 @@ class NavList extends Component {
     return (
       <>
         {this.props.user && (
-          <div className="sidebar col-2">
+          <div
+            style={{ padding: 0 }}
+            className="sidebar col-2 linerBackgroundSidebar"
+          >
             <NavLink
               style={{
                 color: "#fff",
-                padding: 20
+                padding: 20,
+                borderBottom: "1px solid #fff"
               }}
-              className="col-12 "
+              className="col-12 hoverNav"
               to={`/home`}
             >
               My Devices
             </NavLink>
             <NavLink
-              className="col-12"
+              className="col-12 hoverNav"
               style={{
                 color: "#fff",
-                padding: 20
+                padding: 20,
+                borderBottom: "1px solid #fff"
               }}
               to={`/add`}
             >
@@ -33,9 +38,10 @@ class NavList extends Component {
             <NavLink
               style={{
                 color: "#fff",
-                padding: 20
+                padding: 20,
+                borderBottom: "1px solid #fff"
               }}
-              className="col-12"
+              className="col-12 hoverNav"
               to={`/history`}
             >
               History
@@ -43,9 +49,10 @@ class NavList extends Component {
             <NavLink
               style={{
                 color: "#fff",
-                padding: 20
+                padding: 20,
+                borderBottom: "1px solid #fff"
               }}
-              className="col-12 "
+              className="col-12 hoverNav"
               to={`/search`}
             >
               Search

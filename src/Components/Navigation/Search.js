@@ -33,17 +33,19 @@ class Search extends Component {
         }}
       >
         <div id="content-wrapper">
-          <div className="container-fluid">
+          <div className="container-fluid col-11" style={{ marginLeft: 40 }}>
             <div className="card mb-3">
-              <div className="card-header">
+              <div
+                className="card-header"
+                style={{ backgroundColor: "#0d6675", color: "#fff" }}
+              >
                 <i className="fas fa-table" />
-                Devices
+                Search in Alerted Devices
               </div>
               <div className="card-body">
                 <div className="table-responsive">
                   <div>
                     <div>
-                      <h3>Search in Alerted Devices </h3>
                       <div>
                         <input
                           type="text"
@@ -54,6 +56,7 @@ class Search extends Component {
                         <button
                           onClick={() => this.handleSubmit()}
                           className="btn btn-info"
+                          style={{ backgroundColor: "#0d6675", marginLeft: 10 }}
                         >
                           {" "}
                           Search

@@ -23,7 +23,7 @@ import * as actionCreators from "./store/actions";
 
 //CSS
 import "./assets/css/GridSystem.css";
-// import "./assets/css/Custom.css";
+import "./assets/css/Custom.css";
 // import "./assets/css/animation.css";
 import "./assets/css/main.css";
 import "./assets/css/main1.css";
@@ -37,7 +37,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <Navigation />
         <Switch>
           <Route exact path="/home" component={Home} />
@@ -56,7 +56,7 @@ class App extends Component {
           <Redirect to="/home" />
         </Switch>
         <Footer />
-      </div>
+      </>
     );
   }
 }
