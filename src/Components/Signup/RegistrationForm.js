@@ -12,7 +12,8 @@ class RegistationForm extends Component {
     username: "",
     phone_number: "",
     password: "",
-    email: ""
+    email: "",
+    is_store: true
   };
 
   changeHandler = e => {

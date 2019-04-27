@@ -1,19 +1,11 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import loading from "../../assets/images/loading.gif";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-class Loading extends Component {
-  render() {
-    return (
-      <div className="col-12">
-        <img style={{ width: 40 }} src={loading} />
-      </div>
-    );
-  }
-}
+const Loading = () => (
+  <div className="spinner mx-auto text-center">
+    <FontAwesomeIcon icon={faSpinner} spin size="4x" />
+  </div>
+);
 
-const mapStateToProps = state => {
-  return {};
-};
-
-export default connect(null)(Loading);
+export default Loading;

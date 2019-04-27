@@ -16,9 +16,10 @@ class Search extends Component {
     this.setState({ iemi_id: event.target.value });
   };
 
-  handleSubmit(event) {
+  handleSubmit() {
     this.props.fetchAlertDevices(this.state.iemi_id);
   }
+
   render() {
     return (
       <div
@@ -96,9 +97,7 @@ class Search extends Component {
 
 const mapStateToProps = state => {
   return {
-    devices: state.deviceReducer.devices,
     alert: state.deviceReducer.alert,
-    notfound: state.deviceReducer.notfound,
     errors: state.errorReducer.errors
   };
 };
