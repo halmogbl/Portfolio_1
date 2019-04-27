@@ -16,6 +16,9 @@ class RegistationForm extends Component {
     is_store: true
   };
 
+  componentWillUnmount() {
+    this.props.errors.length && this.props.resetError();
+  }
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -131,7 +134,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     signup: (userData, history) =>
-      dispatch(actionCreators.signup(userData, history))
+      dispatch(actionCreators.signup(userData, history)),
+    resetError: () => dispatch(actionCreators.resetError())
   };
 };
 

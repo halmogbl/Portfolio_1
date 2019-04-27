@@ -11,6 +11,9 @@ class Login extends Component {
     password: ""
   };
 
+  componentWillUnmount() {
+    this.props.errors.length && this.props.resetError();
+  }
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -116,7 +119,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     login: (userData, history) =>
-      dispatch(actionCreators.login(userData, history))
+      dispatch(actionCreators.login(userData, history)),
+    resetError: () => dispatch(actionCreators.resetError())
   };
 };
 
