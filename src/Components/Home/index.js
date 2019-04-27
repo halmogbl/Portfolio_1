@@ -22,8 +22,10 @@ class Home extends Component {
       <>
         {this.props.user ? (
           <div
-            className="col-10"
+            // className="col-10"
             style={{
+              // color: "#fff",
+              position: "fixed",
               top: 80,
               left: 240,
               right: 0,

@@ -1,67 +1,25 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
 import { withRouter } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 class Navbar extends Component {
   render() {
-    return (
-      <div
-        className="col-12"
-        style={{
-          color: "#fff",
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          padding: 0,
-          background: "#212529"
-        }}
-      >
-        <nav
-          className="navbar navbar-expand navbar-dark bg-dark static-top col-12"
-          style={{}}
+    return this.props.user ? (
+      <div className="col-12 navbar navbar-expand navbar-dark bg-dark static-top ">
+        <Link className="navbar-brand  col-3 text-left" to={`/home`}>
+          SEKIAL
+        </Link>
+        <button
+          onClick={() => this.props.logout(this.props.history)}
+          className="btn  col-9 text-right"
         >
-          <Link className="navbar-brand col-6" to={`/home`}>
-            SEKIAL
-          </Link>
-          {this.props.user ? (
-            <button
-              onClick={() => this.props.logout(this.props.history)}
-              className="btn col-10"
-            >
-              {this.props.user ? <span>Logout</span> : <div />}
-            </button>
-          ) : (
-            <>
-              <Link
-                style={{
-                  color: "#fff",
-                  textDecoration: "none",
-                  padding: 10
-                }}
-                className="col-2"
-                to={`/login`}
-              >
-                Login
-              </Link>
-
-              <Link
-                style={{
-                  color: "#fff",
-                  textDecoration: "none",
-                  padding: 10
-                }}
-                className="col-2"
-                to={`/signup`}
-              >
-                Signup
-              </Link>
-            </>
-          )}
-        </nav>
+          Logout
+        </button>
       </div>
+    ) : (
+      <></>
     );
   }
 }

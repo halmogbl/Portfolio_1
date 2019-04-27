@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 
 //Components
 import Home from "./Components/Home";
-import Navbar from "./Components/Navigation/Navbar";
-import NavList from "./Components/Navigation/NavList";
+
+import Navigation from "./Components/Navigation";
+
 import Footer from "./Components/Footer";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/RegistrationForm";
@@ -36,9 +37,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="content-wrapper col-12" style={{}}>
-        <Navbar />
-        <NavList />
+      <div>
+        <Navigation />
         <Switch>
           <Route exact path="/home" component={Home} />
           <Route exact path="/login" component={Login} />
