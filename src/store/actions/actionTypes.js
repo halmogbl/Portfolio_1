@@ -15,5 +15,5 @@ export const FETCH_DEVICES = "FETCH_DEVICES";
 export const FETCH_ALERT_DEVICES = "FETCH_ALERT_DEVICES";
 
 export const FETCH_HISTORY = "FETCH_HISTORY";
-export const FETCH_INFO_BACK = "FETCH_INFO_BACK";
-export const NOTINDATA = "NOTINDATA";
+export const RESET = "RESET";
+export const RESET_ERROR = "RESET_ERROR";

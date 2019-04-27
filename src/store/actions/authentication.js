@@ -49,13 +49,8 @@ export const login = (userData, history) => {
       dispatch(setCurrentUser(decodedUser));
       history.push("/home");
     } catch (error) {
-      // console.error("username", error.response.data.username);
-      // console.error("password", error.response.data.password);
-      // console.error("HD", error.response.request.responseText);
-
       console.log("error", error);
-
-      dispatch(setErrors(error.response.request.responseText));
+      dispatch(setErrors(error.response.data));
     }
   };
 };
@@ -63,22 +58,22 @@ export const login = (userData, history) => {
 export const signup = (userData, history) => {
   return async dispatch => {
     try {
-      let response = await instance.post("store/register/", userData);
+      let response = await instance.post("user/register/", userData);
       let user = response.data;
       let decodedUser = jwt_decode(user.token);
       setAuthToken(user.token);
       dispatch(setCurrentUser(decodedUser));
       history.push("/home");
-    } catch (err) {
-      console.error(err.response);
-      setErrors(err.response);
+    } catch (error) {
+      console.error(error.response);
+      dispatch(setErrors(error.response.data));
     }
   };
 };
 
 export const logout = history => {
   setAuthToken();
-  history.push("/user/login/");
+  history.push("/user/login");
   return setCurrentUser();
 };
 

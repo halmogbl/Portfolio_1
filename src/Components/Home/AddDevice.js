@@ -6,7 +6,9 @@ class AddDevice extends Component {
     iemi_id: null,
     username: null
   };
-
+  componentWillUnmount() {
+    this.props.errors.length && this.props.resetError();
+  }
   DeviceChange = e => {
     this.setState({ iemi_id: e.target.value });
   };
@@ -39,9 +41,15 @@ class AddDevice extends Component {
                     className="table table-bordered "
                     id="dataTable"
                     width="100%"
-                    cellspacing="0"
                   >
                     <thead>
+                      {!!this.props.errors.length && (
+                        <div className="alert alert-danger" role="alert">
+                          {this.props.errors.map(error => (
+                            <li key={error}>{error}</li>
+                          ))}
+                        </div>
+                      )}
                       <tr>
                         <th>NEW IMEI</th>
                       </tr>
@@ -75,14 +83,19 @@ class AddDevice extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  errors: state.errorReducer.errors
+});
+
 const mapDispatchToProps = dispatch => {
   return {
     addDevice: (device, history) =>
-      dispatch(actionCreators.addDevice(device, history))
+      dispatch(actionCreators.addDevice(device, history)),
+    resetError: () => dispatch(actionCreators.resetError())
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AddDevice);

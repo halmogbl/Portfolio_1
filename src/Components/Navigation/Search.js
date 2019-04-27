@@ -7,21 +7,24 @@ class Search extends Component {
     iemi_id: ""
   };
 
+  componentWillUnmount() {
+    this.props.errors.length && this.props.resetError();
+    this.props.errors && this.props.reset();
+  }
+
   handleChange = event => {
     this.setState({ iemi_id: event.target.value });
-    console.log(this.state);
   };
 
   handleSubmit() {
     this.props.fetchAlertDevices(this.state.iemi_id);
-    console.log(" search comp iemi", this.state.iemi_id);
   }
+
   render() {
     return (
       <div
         className="col-10"
         style={{
-          // color: "#fff",
           position: "fixed",
           top: 80,
           left: 240,
@@ -56,17 +59,29 @@ class Search extends Component {
                           Search
                         </button>
                       </div>
-                      {this.props.alert && (
+
+                      {this.props.alert && this.props.alert.is_alerted ? (
                         <div>
                           {" "}
                           this device is marked as{" "}
-                          <span className="text-danger">Alerted :</span>{" "}
+                          <span className="text-danger">Alerted </span>{" "}
                         </div>
-                      )}
-                      {!this.props.notfound ? (
-                        <div className=" text-success"> Safe </div>
                       ) : (
-                        <div />
+                        this.props.alert.is_alerted === false && (
+                          <div>
+                            {" "}
+                            this device is marked as{" "}
+                            <span className="text-info">Safe </span>{" "}
+                          </div>
+                        )
+                      )}
+
+                      {this.props.errors && (
+                        <div>
+                          <span className="text-warning">
+                            {this.props.errors[0]}
+                          </span>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -82,15 +97,16 @@ class Search extends Component {
 
 const mapStateToProps = state => {
   return {
-    devices: state.deviceReducer.devices,
     alert: state.deviceReducer.alert,
-    notfound: state.deviceReducer.notfound
+    errors: state.errorReducer.errors
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     fetchAlertDevices: iemi_id =>
-      dispatch(actionCreators.fetchAlertDevices(iemi_id))
+      dispatch(actionCreators.fetchAlertDevices(iemi_id)),
+    resetError: () => dispatch(actionCreators.resetError()),
+    reset: () => dispatch(actionCreators.reset())
   };
 };
 export default connect(
