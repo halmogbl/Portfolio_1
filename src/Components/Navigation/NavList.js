@@ -20,7 +20,7 @@ class NavList extends Component {
               padding: 0
             }}
           >
-            <ul
+            <div
               className="sidebar navbar-nav col-12"
               style={{ margin: 0, padding: 0 }}
             >
@@ -73,13 +73,13 @@ class NavList extends Component {
                     textDecoration: "none",
                     padding: 10
                   }}
-                  className="col-12"
+                  className="col-12 "
                   to={`/search`}
                 >
                   Search
                 </NavLink>
               </li>
-            </ul>
+            </div>
           </div>
         )}
       </>

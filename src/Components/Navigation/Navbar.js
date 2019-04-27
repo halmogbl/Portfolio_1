@@ -19,48 +19,24 @@ class Navbar extends Component {
           background: "#212529"
         }}
       >
-        <nav
-          className="navbar navbar-expand navbar-dark bg-dark static-top col-12"
-          style={{}}
-        >
-          <Link className="navbar-brand col-6" to={`/home`}>
-            SEKIAL
-          </Link>
-          {this.props.user ? (
+        {this.props.user ? (
+          <div
+            className="navbar navbar-expand navbar-dark bg-dark static-top col-12"
+            style={{}}
+          >
+            <Link className="navbar-brand col-6" to={`/home`}>
+              SEKIAL
+            </Link>
             <button
               onClick={() => this.props.logout(this.props.history)}
               className="btn col-10"
             >
               {this.props.user ? <span>Logout</span> : <div />}
             </button>
-          ) : (
-            <>
-              <Link
-                style={{
-                  color: "#fff",
-                  textDecoration: "none",
-                  padding: 10
-                }}
-                className="col-2"
-                to={`/login`}
-              >
-                Login
-              </Link>
-
-              <Link
-                style={{
-                  color: "#fff",
-                  textDecoration: "none",
-                  padding: 10
-                }}
-                className="col-2"
-                to={`/signup`}
-              >
-                Signup
-              </Link>
-            </>
-          )}
-        </nav>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     );
   }
