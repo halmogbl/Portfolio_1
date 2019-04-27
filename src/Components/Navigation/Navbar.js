@@ -5,22 +5,19 @@ import { withRouter } from "react-router-dom";
 import { NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-
 class Navbar extends Component {
   render() {
     return this.props.user ? (
-      <div className="col-12 navbar navbar-expand navbar-dark bg-dark static-top linerBackgroundNav">
-        <Link className="navbar-brand  col-3 text-left" to={`/home`}>
-          SEKIAL
-        </Link>
+      <div className="col-10 navbar navbar-expand navbar-dark bg-dark static-top linerBackgroundNav">
         <button
           onClick={() => this.props.logout(this.props.history)}
-          className="btn  col-9 text-right"
+          className="btn  col-12 text-right"
         >
           <FontAwesomeIcon
-            style={{ fontSize: 25, color: "#fff" }}
+            style={{ fontSize: 17, color: "#fff" }}
             icon={faSignOutAlt}
           />
+          <span style={{ color: "#fff", padding: 10 }}>Logout</span>
         </button>
       </div>
     ) : (

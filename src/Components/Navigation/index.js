@@ -6,8 +6,8 @@ class Navigation extends Component {
   render() {
     return (
       <>
-        <Navbar />
         <NavList />
+        <Navbar />
       </>
     );
   }
