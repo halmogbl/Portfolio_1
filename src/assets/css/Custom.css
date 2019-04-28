@@ -1,10 +1,15 @@
 body {
-  background-color: #d0d9df;
+  background-color: #e7e7e7 !important;
   /* background: linear-gradient(to top, #f64f59, #c471ed, #12c2e9); */
 }
 .active {
   /* border: 1px solid rgb(173, 181, 189); */
-  color: #2fb8e9 !important;
+  color: #f1c601 !important;
+}
+.hoverNav:hover {
+  background: #0d6675;
+  color: #fff;
+  text-decoration: none;
 }
 
 .Shadow {
@@ -54,4 +59,17 @@ body {
 }
 .ulcate {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+.linerBackgroundSidebar {
+  background-image: linear-gradient(to bottom, #042630, #0f7383);
+}
+.linerBackgroundNav {
+  background-image: linear-gradient(to left, #042630, #042630);
+}
+
+.backgroundTable {
+  background: white !important;
+  border-radius: 20px !important;
+  padding: 20px !important;
 }

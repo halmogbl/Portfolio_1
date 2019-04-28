@@ -32,11 +32,17 @@ class Transfare extends Component {
         }}
       >
         <div id="content-wrapper">
-          <div className="container-fluid">
+          <div className="container-fluid col-11" style={{ marginLeft: 40 }}>
             <div className="card mb-3">
-              <div className="card-header">
+              <div
+                className="card-header"
+                style={{
+                  backgroundColor: "#0d6675",
+                  color: "#fff"
+                }}
+              >
                 <i className="fas fa-table" />
-                Devices
+                Transfare Ownership
               </div>
               <div className="card-body">
                 <div className="table-responsive">
@@ -57,7 +63,7 @@ class Transfare extends Component {
                         style={{ marginLeft: 10 }}
                         onClick={this.handleSubmit}
                       >
-                        Transfare Ownership
+                        Transfare
                       </button>
                     </form>
                   </div>

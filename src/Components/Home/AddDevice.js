@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
+import Loading from "../Loading";
+
 class AddDevice extends Component {
   state = {
     iemi_id: null,
@@ -28,63 +30,77 @@ class AddDevice extends Component {
           padding: 0
         }}
       >
-        <div id="content-wrapper">
-          <div className="container-fluid col-12">
-            <div className="card mb-3 ">
-              <div className="card-header col-12">
-                <i className="fas fa-table" />
-                Add New Device
-              </div>
-              <div className="card-body  col-12">
-                <div className="table-responsive  col-12">
-                  <table
-                    className="table table-bordered "
-                    id="dataTable"
-                    width="100%"
-                  >
-                    <thead>
-                      {!!this.props.errors.length && (
-                        <div className="alert alert-danger" role="alert">
-                          {this.props.errors.map(error => (
-                            <li key={error}>{error}</li>
-                          ))}
-                        </div>
-                      )}
+        {this.props.loading ? (
+          <Loading />
+        ) : (
+          <div id="content-wrapper">
+            <div className="container-fluid col-11" style={{ marginLeft: 40 }}>
+              <div className="card mb-3 ">
+                <div
+                  className="card-header col-12"
+                  style={{ backgroundColor: "#0d6675", color: "#fff" }}
+                >
+                  <i className="fas fa-table" />
+                  Add New Device
+                </div>
+                <div className="card-body  col-12">
+                  <div className="table-responsive  col-12">
+                    <table
+                      className="table table-bordered "
+                      id="dataTable"
+                      width="100%"
+                    >
+                      <thead>
+                        {!!this.props.errors.length && (
+                          <div className="alert alert-danger" role="alert">
+                            {this.props.errors.map(error => (
+                              <li key={error}>{error}</li>
+                            ))}
+                          </div>
+                        )}
+                      </thead>
                       <tr>
-                        <th>NEW IMEI</th>
+                        <div>
+                          <input
+                            style={{ width: "30%" }}
+                            type="text"
+                            onChange={this.DeviceChange}
+                          />
+                          <button
+                            className="btn"
+                            style={{
+                              padding: 10,
+                              margin: 10,
+                              background: "#green",
+                              backgroundColor: "#0d6675",
+                              color: "#fff"
+                            }}
+                            onClick={() =>
+                              this.props.addDevice(
+                                this.state,
+                                this.props.history
+                              )
+                            }
+                          >
+                            Add Device
+                          </button>
+                        </div>
                       </tr>
-                    </thead>
-                    <tr>
-                      <div>
-                        <input type="text" onChange={this.DeviceChange} />
-                        <button
-                          className="btn btn-success"
-                          style={{
-                            padding: 10,
-                            margin: 10,
-                            background: "#green"
-                          }}
-                          onClick={() =>
-                            this.props.addDevice(this.state, this.props.history)
-                          }
-                        >
-                          Add
-                        </button>
-                      </div>
-                    </tr>
-                  </table>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  errors: state.errorReducer.errors
+  errors: state.errorReducer.errors,
+  loading: state.deviceReducer.loading
 });
 
 const mapDispatchToProps = dispatch => {

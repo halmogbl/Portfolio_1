@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions/";
 import { NavLink } from "react-router-dom";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMobileAlt } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Loading from "../Loading";
 class DeviceDetails extends Component {
   state = {
     id: null,
@@ -56,49 +59,115 @@ class DeviceDetails extends Component {
           padding: 0
         }}
       >
-        <div id="content-wrapper">
-          <div className="container-fluid">
-            <div className="card mb-3">
-              <div className="card-header">
-                <i className="fas fa-table" />
-                Devices
-              </div>
-              <div className="card-body">
-                <div className="table-responsive">
-                  <div>
-                    {this.state.device && this.state.device.is_alerted ? (
-                      <button
-                        className="btn btn-warning"
-                        style={{ color: "#000" }}
-                        onClick={this.handleAlertFalse}
+        {this.props.loading ? (
+          <Loading />
+        ) : (
+          <div id="content-wrapper">
+            <div className="container-fluid">
+              <div className="card mb-3">
+                <div
+                  className="card-header col-12"
+                  style={{ backgroundColor: "#0d6675", color: "#fff" }}
+                >
+                  <div style={{ paddingRight: 20 }} className="col-9">
+                    <span className="col-6">
+                      <FontAwesomeIcon
+                        style={{ fontSize: 25, marginRight: 20 }}
+                        icon={faMobileAlt}
+                      />
+                      {this.state.device && this.state.device.iemi_id}
+                    </span>
+                  </div>
+
+                  {this.state.device && this.state.device.is_alerted ? (
+                    <div />
+                  ) : (
+                    <div className="col-3">
+                      <NavLink
+                        className="btn btn-success col-12"
+                        to={`/home/device/${
+                          this.props.match.params.device_id
+                        }/transfare`}
                       >
-                        Remove Alert
-                      </button>
-                    ) : (
-                      <>
-                        <NavLink
-                          className="btn btn-success"
-                          to={`/home/device/${
-                            this.props.match.params.device_id
-                          }/transfare`}
-                        >
+                        <span style={{ paddingRight: 20 }}>
+                          {" "}
                           Transfare Ownership
-                        </NavLink>
-                        <button
-                          style={{ marginLeft: 10 }}
-                          className="btn btn-danger"
-                          onClick={this.handleAlertTrue}
-                        >
-                          Alert
-                        </button>
-                      </>
-                    )}
+                        </span>
+                        <FontAwesomeIcon
+                          style={{ fontSize: 15 }}
+                          icon={faArrowRight}
+                        />
+
+                        <span />
+                      </NavLink>
+                    </div>
+                  )}
+                </div>
+                <div className="card-body">
+                  <div className="table-responsive">
+                    <div>
+                      {this.state.device && this.state.device.is_alerted ? (
+                        <p style={{ marginTop: 10, marginRight: 10 }}>
+                          Your device in alerted list!
+                          <p>
+                            Press the button
+                            <span
+                              style={{
+                                fontWeight: "500",
+                                fontSize: 16
+                              }}
+                            >
+                              {" "}
+                              Remove Alert{" "}
+                            </span>
+                            to remove the device from the alerted devices
+                            <span>
+                              <button
+                                className="btn btn-warning"
+                                style={{ color: "#000", marginLeft: 10 }}
+                                onClick={this.handleAlertFalse}
+                              >
+                                Remove Alert
+                              </button>
+                            </span>
+                          </p>
+                        </p>
+                      ) : (
+                        <>
+                          <p style={{ marginTop: 10 }}>
+                            Did you lost your device?
+                            <p>
+                              Press the button
+                              <span
+                                style={{
+                                  fontWeight: "500",
+                                  fontSize: 16
+                                }}
+                              >
+                                {" "}
+                                Lost The Device
+                              </span>
+                              to add the device to the alerted devices
+                              <span>
+                                <button
+                                  style={{ marginLeft: 10 }}
+                                  className="btn btn-danger"
+                                  onClick={this.handleAlertTrue}
+                                >
+                                  Lost The Device
+                                </button>
+                              </span>
+                            </p>
+                          </p>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
@@ -106,7 +175,8 @@ class DeviceDetails extends Component {
 
 const mapStateToProps = state => ({
   user: state.auth.user,
-  devices: state.deviceReducer.devices
+  devices: state.deviceReducer.devices,
+  loading: state.deviceReducer.loading
 });
 const mapDispatchToProps = dispatch => {
   return {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
 import HistoryList from "./HistoryList";
+import Loading from "../Loading";
 class History extends Component {
   async componentDidMount() {
     await this.props.fetchHistory();
@@ -9,7 +10,6 @@ class History extends Component {
 
   render() {
     const historylist = this.props.history;
-
     const History = historylist.map(history => (
       <HistoryList key={`${history.modified}`} history={history} />
     ));
@@ -25,48 +25,51 @@ class History extends Component {
           padding: 0
         }}
       >
-        <div id="content-wrapper">
-          <div className="container-fluid">
-            <div className="card mb-3">
-              <div className="card-header">
-                <i className="fas fa-table" />
-                History
-              </div>
-              <div className="card-body">
-                <div className="table-responsive">
-                  <table
-                    className="table table-bordered"
-                    id="dataTable"
-                    width="100%"
-                  >
-                    <thead>
-                      <tr>
-                        <th>History</th>
-                      </tr>
-                    </thead>
-                    <div
-                      style={{
-                        overflow: "scroll",
-                        height: "500px",
-                        marginBottom: 10,
-                        padding: 0
-                      }}
+        {this.props.loading ? (
+          <div>loading</div>
+        ) : (
+          <div id="content-wrapper">
+            <div className="container-fluid col-11" style={{ marginLeft: 40 }}>
+              <div className="card mb-3">
+                <div
+                  className="card-header"
+                  style={{ backgroundColor: "#0d6675", color: "#fff" }}
+                >
+                  <i className="fas fa-table" />
+                  History
+                </div>
+                <div className="card-body">
+                  <div className="table-responsive">
+                    <table
+                      className="table table-bordered"
+                      id="dataTable"
+                      width="100%"
                     >
-                      {History}
-                    </div>
-                  </table>
+                      <div
+                        style={{
+                          overflow: "scroll",
+                          height: "500px",
+                          marginBottom: 10,
+                          padding: 0
+                        }}
+                      >
+                        {History}
+                      </div>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  history: state.historyReducer.history
+  history: state.historyReducer.history,
+  loading: state.deviceReducer.loading
 });
 
 const mapDispatchToProps = dispatch => ({

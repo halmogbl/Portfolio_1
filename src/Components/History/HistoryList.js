@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMobileAlt } from "@fortawesome/free-solid-svg-icons";
 
 class HistoryList extends Component {
   render() {
@@ -7,7 +9,20 @@ class HistoryList extends Component {
     return (
       <>
         <tr className="col-12" style={{ padding: 0, background: "#e7e7e7" }}>
-          <th className="col-12">iemi: {history.iemi_id}</th>
+          <th className="col-12 row" style={{ marginLeft: 10 }}>
+            <div style={{ paddingRight: 20, margin: 0 }}>
+              <FontAwesomeIcon
+                style={{ fontSize: 25, color: "#000" }}
+                icon={faMobileAlt}
+              />
+            </div>
+            <span className="col-8" style={{ color: "#000" }}>
+              {history.iemi_id}
+            </span>
+            <span className="col-6" className="text-right">
+              Applied To :{history.user}
+            </span>
+          </th>
         </tr>
         <tr className="col-12" style={{ padding: 0 }}>
           <th className="col-4">
@@ -15,11 +30,16 @@ class HistoryList extends Component {
             <span> {history.created.substring(11, 19)}</span>
           </th>
           <th className="col-4">
-            <span> Last Modified : {history.modified.substring(0, 10)} |</span>
-            <span> {history.modified.substring(11, 19)}</span>
+            <span style={{ fontSize: 15 }}>
+              {" "}
+              Last Modified : {history.modified.substring(0, 10)} |
+            </span>
+            <span style={{ fontSize: 15 }}>
+              {" "}
+              {history.modified.substring(11, 19)}
+            </span>
           </th>
           <th className="col-4">
-            status:
             {history.is_alerted ? (
               <span style={{ color: "red" }}>Alerted</span>
             ) : (
