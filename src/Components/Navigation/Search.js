@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
+import Loading from "../Loading";
 
 class Search extends Component {
   state = {
@@ -32,67 +33,74 @@ class Search extends Component {
           padding: 0
         }}
       >
-        <div id="content-wrapper">
-          <div className="container-fluid col-11" style={{ marginLeft: 40 }}>
-            <div className="card mb-3">
-              <div
-                className="card-header"
-                style={{ backgroundColor: "#0d6675", color: "#fff" }}
-              >
-                <i className="fas fa-table" />
-                Search in Alerted Devices
-              </div>
-              <div className="card-body">
-                <div className="table-responsive">
-                  <div>
+        {this.props.loading ? (
+          <Loading />
+        ) : (
+          <div id="content-wrapper">
+            <div className="container-fluid col-11" style={{ marginLeft: 40 }}>
+              <div className="card mb-3">
+                <div
+                  className="card-header"
+                  style={{ backgroundColor: "#0d6675", color: "#fff" }}
+                >
+                  <i className="fas fa-table" />
+                  Search in Alerted Devices
+                </div>
+                <div className="card-body">
+                  <div className="table-responsive">
                     <div>
                       <div>
-                        <input
-                          type="text"
-                          onChange={this.handleChange}
-                          placeholder="type IEMI here"
-                          className="form-control col-4"
-                        />
-                        <button
-                          onClick={() => this.handleSubmit()}
-                          className="btn btn-info"
-                          style={{ backgroundColor: "#0d6675", marginLeft: 10 }}
-                        >
-                          {" "}
-                          Search
-                        </button>
-                      </div>
-
-                      {this.props.alert && this.props.alert.is_alerted ? (
                         <div>
-                          {" "}
-                          this device is marked as{" "}
-                          <span className="text-danger">Alerted </span>{" "}
+                          <input
+                            type="text"
+                            onChange={this.handleChange}
+                            placeholder="type IEMI here"
+                            className="form-control col-4"
+                          />
+                          <button
+                            onClick={() => this.handleSubmit()}
+                            className="btn btn-info"
+                            style={{
+                              backgroundColor: "#0d6675",
+                              marginLeft: 10
+                            }}
+                          >
+                            {" "}
+                            Search
+                          </button>
                         </div>
-                      ) : (
-                        this.props.alert.is_alerted === false && (
+
+                        {this.props.alert && this.props.alert.is_alerted ? (
                           <div>
                             {" "}
                             this device is marked as{" "}
-                            <span className="text-info">Safe </span>{" "}
+                            <span className="text-danger">Alerted </span>{" "}
                           </div>
-                        )
-                      )}
+                        ) : (
+                          this.props.alert.is_alerted === false && (
+                            <div>
+                              {" "}
+                              this device is marked as{" "}
+                              <span className="text-info">Safe </span>{" "}
+                            </div>
+                          )
+                        )}
 
-                      {this.props.errors && (
-                        <div>
-                          <span className="text-warning">
-                            {this.props.errors[0]}
-                          </span>
-                        </div>
-                      )}
+                        {this.props.errors && (
+                          <div>
+                            <span className="text-warning">
+                              {this.props.errors[0]}
+                            </span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
@@ -101,7 +109,8 @@ class Search extends Component {
 const mapStateToProps = state => {
   return {
     alert: state.deviceReducer.alert,
-    errors: state.errorReducer.errors
+    errors: state.errorReducer.errors,
+    loading: state.deviceReducer.loading
   };
 };
 const mapDispatchToProps = dispatch => {

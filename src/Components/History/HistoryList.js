@@ -16,7 +16,12 @@ class HistoryList extends Component {
                 icon={faMobileAlt}
               />
             </div>
-            <span style={{ color: "#000" }}>{history.iemi_id}</span>
+            <span className="col-8" style={{ color: "#000" }}>
+              {history.iemi_id}
+            </span>
+            <span className="col-6" className="text-right">
+              Applied To :{history.user}
+            </span>
           </th>
         </tr>
         <tr className="col-12" style={{ padding: 0 }}>
@@ -25,8 +30,14 @@ class HistoryList extends Component {
             <span> {history.created.substring(11, 19)}</span>
           </th>
           <th className="col-4">
-            <span> Last Modified : {history.modified.substring(0, 10)} |</span>
-            <span> {history.modified.substring(11, 19)}</span>
+            <span style={{ fontSize: 15 }}>
+              {" "}
+              Last Modified : {history.modified.substring(0, 10)} |
+            </span>
+            <span style={{ fontSize: 15 }}>
+              {" "}
+              {history.modified.substring(11, 19)}
+            </span>
           </th>
           <th className="col-4">
             {history.is_alerted ? (

@@ -17,3 +17,4 @@ export const FETCH_ALERT_DEVICES = "FETCH_ALERT_DEVICES";
 export const FETCH_HISTORY = "FETCH_HISTORY";
 export const RESET = "RESET";
 export const RESET_ERROR = "RESET_ERROR";
+export const LOADING = "LOADING";
