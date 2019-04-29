@@ -35,6 +35,8 @@ const deviceReducer = (state = initialState, action) => {
         loading: false
       };
     case actionTypes.LOADING:
+      console.log("reduc", action.payload);
+
       return {
         ...state,
         loading: action.payload

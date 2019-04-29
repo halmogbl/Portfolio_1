@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions/";
+import { withRouter } from "react-router-dom";
 
 class Transfare extends Component {
   state = {
@@ -17,6 +18,7 @@ class Transfare extends Component {
   };
   handleSubmit = () => {
     this.props.transferOwnership(this.state, this.state.id, this.props.history);
+    console.log("history comp", this.props.history);
   };
 
   render() {
@@ -84,7 +86,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Transfare);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(Transfare)
+);

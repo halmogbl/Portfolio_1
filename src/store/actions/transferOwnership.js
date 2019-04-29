@@ -6,6 +6,8 @@ const instance = axios.create({
 });
 
 export const transferOwnership = (user, device_id, history) => {
+  console.log("history action", history);
+
   return async dispatch => {
     dispatch(setLoading(true));
     try {
