@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions/";
 import { withRouter } from "react-router-dom";
+import Loading from "../Loading";
 
 class Transfare extends Component {
   state = {
@@ -33,52 +34,66 @@ class Transfare extends Component {
           padding: 0
         }}
       >
-        <div id="content-wrapper">
-          <div className="container-fluid col-11" style={{ marginLeft: 40 }}>
-            <div className="card mb-3">
-              <div
-                className="card-header"
-                style={{
-                  backgroundColor: "#0d6675",
-                  color: "#fff"
-                }}
-              >
-                <i className="fas fa-table" />
-                Transfare Ownership
-              </div>
-              <div className="card-body">
-                <div className="table-responsive">
-                  <div>
-                    <form>
-                      <label
-                        className="col-form-label"
-                        style={{ marginRight: 10 }}
-                      >
-                        NEW OWNER
-                      </label>
-                      <input
-                        className="col-4 form-control"
-                        onChange={this.handleChange}
-                      />
-                      <button
-                        className=" col-2 btn btn-success"
-                        style={{ marginLeft: 10 }}
-                        onClick={this.handleSubmit}
-                      >
-                        Transfare
-                      </button>
-                    </form>
+        {this.props.loading ? (
+          <Loading />
+        ) : (
+          <div id="content-wrapper">
+            <div className="container-fluid col-11" style={{ marginLeft: 40 }}>
+              <div className="card mb-3">
+                <div
+                  className="card-header"
+                  style={{
+                    backgroundColor: "#0d6675",
+                    color: "#fff"
+                  }}
+                >
+                  <i className="fas fa-table" />
+                  Transfare Ownership
+                </div>
+                <div className="card-body">
+                  <div className="table-responsive">
+                    <div>
+                      {!!this.props.errors.length && (
+                        <div className="alert alert-danger" role="alert">
+                          {this.props.errors.map(error => (
+                            <li key={error}>{error}</li>
+                          ))}
+                        </div>
+                      )}
+                      <form>
+                        <label
+                          className="col-form-label"
+                          style={{ marginRight: 10 }}
+                        >
+                          NEW OWNER
+                        </label>
+                        <input
+                          className="col-4 form-control"
+                          onChange={this.handleChange}
+                        />
+                        <button
+                          className=" col-2 btn btn-success"
+                          style={{ marginLeft: 10 }}
+                          onClick={this.handleSubmit}
+                        >
+                          Transfare
+                        </button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
 }
-
+const mapStateToProps = state => ({
+  loading: state.deviceReducer.loading,
+  errors: state.errorReducer.errors
+});
 const mapDispatchToProps = dispatch => {
   return {
     transferOwnership: (user, deviceID, history) =>
@@ -88,7 +103,7 @@ const mapDispatchToProps = dispatch => {
 
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(Transfare)
 );

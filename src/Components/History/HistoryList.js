@@ -19,9 +19,7 @@ class HistoryList extends Component {
             <span className="col-8" style={{ color: "#000" }}>
               {history.iemi_id}
             </span>
-            <span className="col-6" className="text-right">
-              Applied To :{history.user}
-            </span>
+            <span className="text-right col-6">Applied To :{history.user}</span>
           </th>
         </tr>
         <tr className="col-12" style={{ padding: 0 }}>
