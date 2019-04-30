@@ -91,11 +91,11 @@ export const changeAlertStatusFalse = (user, deviceID, history) => {
 
 export const fetchAlertDevices = iemi_id => {
   return async dispatch => {
-    dispatch(setLoading(true));
     dispatch(reset());
     dispatch(resetError());
     dispatch(fetchHistory());
     try {
+      dispatch(setLoading(true));
       const res = await instance.get(`alert/${iemi_id}/`);
       const alert = res.data;
 
@@ -104,9 +104,9 @@ export const fetchAlertDevices = iemi_id => {
         payload: alert
       });
     } catch (err) {
-      dispatch(setLoading(false));
       console.error("Error while fetching Alert devices", err);
       dispatch(setErrors(err.response.data));
+      dispatch(setLoading(false));
     }
   };
 };

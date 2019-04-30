@@ -7,7 +7,6 @@ class Search extends Component {
   state = {
     iemi_id: ""
   };
-
   componentWillUnmount() {
     this.props.errors.length && this.props.resetError();
     this.props.errors && this.props.reset();
@@ -19,6 +18,7 @@ class Search extends Component {
 
   handleSubmit() {
     this.props.fetchAlertDevices(this.state.iemi_id);
+    console.log(this.props.loading);
   }
 
   render() {

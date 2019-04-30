@@ -5,6 +5,8 @@ const initialState = {
 };
 
 const transferOwnershipReducer = (state = initialState, action) => {
+  console.log("history reduc", action.payload);
+
   switch (action.type) {
     case actionTypes.TRANSFER_OWNERSHIP:
       return {
